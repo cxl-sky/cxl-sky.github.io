@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.cxlsky.com</id>
     <title>Gridea</title>
-    <updated>2021-06-03T08:57:42.887Z</updated>
+    <updated>2021-06-03T08:59:22.469Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.cxlsky.com"/>
     <link rel="self" href="https://www.cxlsky.com/atom.xml"/>
@@ -10,6 +10,106 @@
     <logo>https://www.cxlsky.com/images/avatar.png</logo>
     <icon>https://www.cxlsky.com/favicon.ico</icon>
     <rights>All rights reserved 2021, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[注册中心Consul]]></title>
+        <id>https://www.cxlsky.com/post/注册中心Consul/</id>
+        <link href="https://www.cxlsky.com/post/注册中心Consul/">
+        </link>
+        <updated>2020-02-11T05:17:08.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-为什么选择consul">一、为什么选择consul</h2>
+<p>我们知道 Eureka 2.X 遇到困难停止开发了，但其实对国内的用户影响甚小，一方面国内大都使用的是 Eureka 1.X 系列，另一方面 Spring Cloud 支持很多服务发现的软件，Eureka 只是其中之一，下面是 Spring Cloud 支持的服务发现软件以及特性对比：</p>
+<figure data-type="image" tabindex="1"><img src="https://imgs.cxlsky.com/image1560846242657.jpg" alt="registry.jpg" loading="lazy"></figure>
+<p>在以上服务发现的软件中，Euerka 和 Consul 使用最为广泛。但由于eureka已经停止更新，所以这里选用consul。</p>
+<h2 id="二-consul介绍">二、Consul介绍</h2>
+<p>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其它分布式服务注册与发现的方案，Consul 的方案更“一站式”，内置了服务注册与发现框 架、分布一致性协议实现、健康检查、Key/Value 存储、多数据中心方案，不再需要依赖其它工具（比如 ZooKeeper 等）。使用起来也较 为简单。Consul 使用 Go 语言编写，因此具有天然可移植性(支持Linux、windows和Mac OS X)；安装包仅包含一个可执行文件，方便部署，与 Docker 等轻量级容器可无缝配合。</p>
+<h3 id="21-consul优势">2.1 consul优势</h3>
+<p>1、使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft。<br>
+2、支持多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障,而其部署则需要考虑网络延迟, 分片等情况等。 zookeeper 和 etcd 均不提供多数据中心功能的支持。<br>
+3、支持健康检查。 etcd 不提供此功能。<br>
+4、支持 http 和 dns 协议接口。 zookeeper 的集成较为复杂, etcd 只支持 http 协议。<br>
+5、官方提供 web 管理界面, etcd 无此功能。<br>
+6、综合比较, Consul 作为服务注册和配置管理的新星, 比较值得关注和研究。</p>
+<h3 id="22-consul角色">2.2 Consul角色</h3>
+<p>1、client: 客户端, 无状态, 将 HTTP 和 DNS 接口请求转发给局域网内的服务端集群。<br>
+2、server: 服务端, 保存配置信息, 高可用集群, 在局域网内与本地客户端通讯, 通过广域网与其它数据中心通讯。 每个数据中心的 server 数量推荐为 3 个或是 5 个。</p>
+<p>Consul 客户端、服务端还支持夸中心的使用，更加提高了它的高可用性。</p>
+<figure data-type="image" tabindex="2"><img src="https://imgs.cxlsky.com/image1560846818889.jpg" alt="consul.jpg" loading="lazy"></figure>
+<h3 id="23-consul工作原理">2.3 Consul工作原理</h3>
+<figure data-type="image" tabindex="3"><img src="https://imgs.cxlsky.com/image1560846871580.jpg" alt="consul1.jpg" loading="lazy"></figure>
+<p>1、当 Producer 启动的时候，会向 Consul 发送一个 post 请求，告诉 Consul 自己的 IP 和 Port<br>
+2、Consul 接收到 Producer 的注册后，每隔10s（默认）会向 Producer 发送一个健康检查的请求，检验Producer是否健康<br>
+3、当 Consumer 发送 GET 方式请求 /api/address 到 Producer 时，会先从 Consul 中拿到一个存储服务 IP 和 Port 的临时表，从表中拿到 Producer 的 IP 和 Port 后再发送 GET 方式请求 /api/address<br>
+4、该临时表每隔10s会更新，只包含有通过了健康检查的 Producer</p>
+<p>Spring Cloud Consul 项目是针对 Consul 的服务治理实现。Consul 是一个分布式高可用的系统，它包含多个组件，但是作为一个整体，在微服务架构中为我们的基础设施提供服务发现和服务配置的工具。</p>
+<h2 id="三-springcloud项目整合consul">三、SpringCloud项目整合Consul</h2>
+<h3 id="31-准备工作">3.1 准备工作</h3>
+<p>在之前的父工程项目中，新建一个子模块service-a，引入以下主要依赖：(其他依赖可自行添加)</p>
+<pre><code class="language-java">&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+</code></pre>
+<p>其中spring-boot-starter-actuator依赖用户健康检查，如果不加这个依赖，可以自定义健康检查。<br>
+其中spring-cloud-starter-consul-discovery是consul的依赖。</p>
+<h3 id="32-修改配置文件">3.2 修改配置文件</h3>
+<pre><code class="language-yaml">#连接注册中心
+spring:
+  cloud:
+    consul:
+      #注册中心的地址，使用${}的形式，如果冒号前面的值为空，则取后面的值。
+      host: ${DS_SERVER:192.168.132.131} 
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}-${random.uuid}
+
+#此配置用于健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: &quot;*&quot;
+  endpoint:
+    health:
+      show-details: always
+</code></pre>
+<h3 id="33-修改springboot入口类增加注解enablediscoveryclient">3.3 修改springboot入口类，增加注解<code>@EnableDiscoveryClient</code></h3>
+<pre><code class="language-java">@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = &quot;com.cxlsky&quot;)
+@EnableFeignClients(basePackages={&quot;com.cxlsky&quot;})
+public class EurekaClientAApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaClientAApplication.class, args);
+    }
+
+}
+</code></pre>
+<p>这样我们spring项目就改造完成了。</p>
+<h2 id="四-consul服务端的安装">四、Consul服务端的安装</h2>
+<h3 id="41-这里使用docker安装单节点consul">4.1 这里使用docker安装单节点consul：</h3>
+<pre><code class="language-bash">## 1、搜索镜像
+docker search consul
+## 2、拉取镜像
+docker pull consul
+## 3、运行镜像
+docker run -d -p 18500:8500 --name consul-server consul agent -server -bootstrap -client 0.0.0.0 -ui
+## 4、查看运行日志
+docker logs -f  consul-server
+</code></pre>
+<h3 id="42-查看web页面">4.2 查看web页面</h3>
+<figure data-type="image" tabindex="4"><img src="https://imgs.cxlsky.com/image1560850783917.jpg" alt="consulweb.jpg" loading="lazy"></figure>
+<p>可以看到现在只有consul自己一个服务注册上去了，下面我们启动我们的项目。</p>
+<figure data-type="image" tabindex="5"><img src="https://imgs.cxlsky.com/image1560851191684.jpg" alt="consulclient.jpg" loading="lazy"></figure>
+<p>可以看到上面多出了我们的服务，这样就完成了服务发现。</p>
+<blockquote>
+<p>由于注册中心的重要性，我们需要做高可用，所以需要集群部署。后续的章节中我会讲解以下docker swarm，并且使用docker swarm快速完成consul的集群部署。</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://www.cxlsky.com/post/hello-gridea/</id>
@@ -41,6 +141,98 @@
 <p>未来，它一定会成为你离不开的伙伴</p>
 <p>尽情发挥你的才华吧！</p>
 <p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[远程事务配置]]></title>
+        <id>https://www.cxlsky.com/post/远程事务使用说明/</id>
+        <link href="https://www.cxlsky.com/post/远程事务使用说明/">
+        </link>
+        <updated>2018-03-11T01:12:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1在git下载seata">1.在git下载seata</h2>
+<p>地址：<a href="http://121.5.101.66:8882/city-management/seata.git">http://121.5.101.66:8882/city-management/seata.git</a></p>
+<h2 id="2启动seata">2.启动:seata</h2>
+<p>在seata文件夹中的bin有启动脚本 启动就行</p>
+<h2 id="3加入依赖">3.加入依赖</h2>
+<pre><code class="language-java">&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-alibaba-seata&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="4在需要远程事务的地方加载注解">4.在需要远程事务的地方加载注解</h2>
+<pre><code class="language-java">@GlobalTransactional
+@Override
+public void testT() {
+    Test1DO aDo = new Test1DO();
+    aDo.setName(&quot;123&quot;);
+    this.save(aDo);
+    Test2DTO dto = new Test2DTO();
+    dto.setName(aDo.getName());
+    test2Client.add(dto);
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mybatis常规配置]]></title>
+        <id>https://www.cxlsky.com/post/mybatis常规配置/</id>
+        <link href="https://www.cxlsky.com/post/mybatis常规配置/">
+        </link>
+        <updated>2018-02-11T01:12:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-mybatis-configxml配置">一、mybatis-config.xml配置</h2>
+<p>由于开发新项目，需要对mybatis做配置，这些配置可以放在系统的yml文件里，也可以单独放在一个xml文件里，本示例放到了单独文件，如下所示：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+
+	&lt;!-- 全局参数 --&gt;
+	&lt;settings&gt;
+		&lt;!-- 使全局的映射器启用或禁用缓存。 --&gt;
+		&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 --&gt;
+		&lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。 --&gt;
+		&lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 是否允许单条sql 返回多个数据集 (取决于驱动的兼容性) default:true --&gt;
+		&lt;setting name=&quot;multipleResultSetsEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 是否可以使用列的别名 (取决于驱动的兼容性) default:true --&gt;
+		&lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 允许JDBC 生成主键。需要驱动器支持。如果设为了true，这个设置将强制使用被生成的主键，有一些驱动器不兼容不过仍然可以执行。 default:false --&gt;
+		&lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;false&quot; /&gt;
+
+		&lt;!-- 指定 MyBatis 如何自动映射 数据基表的列 NONE：不隐射 PARTIAL:部分 FULL:全部 --&gt;
+		&lt;setting name=&quot;autoMappingBehavior&quot; value=&quot;PARTIAL&quot; /&gt;
+
+		&lt;!-- 这是默认的执行类型 （SIMPLE: 简单； REUSE: 执行器可能重复使用prepared statements语句；BATCH: 
+			执行器可以重复执行语句和批量更新） --&gt;
+		&lt;setting name=&quot;defaultExecutorType&quot; value=&quot;SIMPLE&quot; /&gt;
+
+		&lt;!-- 使用驼峰命名法转换字段。 --&gt;
+		&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 设置本地缓存范围 session:就会有数据的共享 statement:语句范围 (这样就不会有数据的共享 ) defalut:session --&gt;
+		&lt;setting name=&quot;localCacheScope&quot; value=&quot;SESSION&quot; /&gt;
+
+		&lt;!-- 设置但JDBC类型为空时,某些驱动程序 要指定值,default:OTHER，插入空值时不需要指定类型 --&gt;
+		&lt;setting name=&quot;jdbcTypeForNull&quot; value=&quot;NULL&quot; /&gt;
+		&lt;setting name=&quot;callSettersOnNulls&quot; value=&quot;true&quot; /&gt;
+		&lt;!-- 显示sql日志 --&gt;
+		&lt;!--&lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;--&gt;
+
+	&lt;/settings&gt;
+	
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="二-系统-applicationyml-配置">二、系统 application.yml 配置</h2>
+<pre><code class="language-yaml">mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:mapper/*.xml
+</code></pre>
 ]]></content>
     </entry>
 </feed>
