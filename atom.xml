@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.cxlsky.com</id>
     <title>longlongago</title>
-    <updated>2021-06-05T06:36:13.581Z</updated>
+    <updated>2021-06-05T06:51:47.777Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.cxlsky.com"/>
     <link rel="self" href="https://www.cxlsky.com/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2021, longlongago</rights>
     <entry>
         <title type="html"><![CDATA[注册中心Consul]]></title>
-        <id>https://www.cxlsky.com/注册中心Consul/</id>
-        <link href="https://www.cxlsky.com/注册中心Consul/">
+        <id>https://www.cxlsky.com/post/注册中心Consul/</id>
+        <link href="https://www.cxlsky.com/post/注册中心Consul/">
         </link>
         <updated>2020-02-11T05:17:08.000Z</updated>
         <summary type="html"><![CDATA[<p>在微服务的开发过程中，注册中心是一个非常重要的角色，它可以帮助我们发现其他的服务。注册中心也有很多种类，下面主要介绍一下我使用过的 Consul。</p>
@@ -116,8 +116,8 @@ docker logs -f  consul-server
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://www.cxlsky.com/hello-gridea/</id>
-        <link href="https://www.cxlsky.com/hello-gridea/">
+        <id>https://www.cxlsky.com/post/hello-gridea/</id>
+        <link href="https://www.cxlsky.com/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
@@ -149,8 +149,8 @@ docker logs -f  consul-server
     </entry>
     <entry>
         <title type="html"><![CDATA[远程事务配置]]></title>
-        <id>https://www.cxlsky.com/远程事务使用说明/</id>
-        <link href="https://www.cxlsky.com/远程事务使用说明/">
+        <id>https://www.cxlsky.com/post/远程事务使用说明/</id>
+        <link href="https://www.cxlsky.com/post/远程事务使用说明/">
         </link>
         <updated>2018-03-11T01:12:04.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1在git下载seata">1.在git下载seata</h2>
@@ -179,8 +179,8 @@ public void testT() {
     </entry>
     <entry>
         <title type="html"><![CDATA[Mybatis常规配置]]></title>
-        <id>https://www.cxlsky.com/mybatis常规配置/</id>
-        <link href="https://www.cxlsky.com/mybatis常规配置/">
+        <id>https://www.cxlsky.com/post/mybatis常规配置/</id>
+        <link href="https://www.cxlsky.com/post/mybatis常规配置/">
         </link>
         <updated>2018-02-11T01:12:04.000Z</updated>
         <content type="html"><![CDATA[<h2 id="一-mybatis-configxml配置">一、mybatis-config.xml配置</h2>
