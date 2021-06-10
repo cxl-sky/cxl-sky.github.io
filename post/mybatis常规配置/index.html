@@ -9,7 +9,7 @@
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
 <title>Mybatis常规配置 | longlongago</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1622876563579">
+<link rel="shortcut icon" href="/favicon.ico?v=1623314633528">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -211,19 +211,19 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-count">5</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="">
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="category">分类</span>
       </a>
     </div>
     <div class="sidebar-item-box">
       <a href="/tags/">
-        <span class="site-item-stat-count">5</span>
+        <span class="site-item-stat-count">8</span>
         <span class="site-item-stat-name language" data-lan="tag">标签</span>
       </a>
     </div>
@@ -1749,6 +1749,206 @@
     <div class="result" id="result">
       
       <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/jetcache-huan-cun-kuang-jia/"" data-c="
+          &lt;p&gt;之前一直在用Spring Cache进行接口数据的缓存，主要是Spring Cache在对具体key缓存失效时间的设置不是很方法，还要自己去扩展，无意中发现了阿里的JetCache。大部分的需求都能满足，并且有一些很实用的功能，今天给大家介绍下。&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;JetCache是一个基于Java的缓存系统封装，提供统一的API和注解来简化缓存的使用。 JetCache提供了比SpringCache更加强大的注解，可以原生的支持TTL、两级缓存、分布式自动刷新，还提供了Cache接口用于手工缓存操作。 当前有四个实现，RedisCache、TairCache（此部分未在github开源）、CaffeineCache(in memory)和一个简易的LinkedHashMapCache(in memory)，要添加新的实现也是非常简单的。&lt;/p&gt;
+&lt;p&gt;GitHub地址：&lt;a href=&#34;https://github.com/alibaba/jetcache&#34;&gt;https://github.com/alibaba/jetcache&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;特性&#34;&gt;特性&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;通过统一的API访问Cache系统&lt;/li&gt;
+&lt;li&gt;通过注解实现声明式的方法缓存，支持TTL和两级缓存&lt;/li&gt;
+&lt;li&gt;通过注解创建并配置Cache实例&lt;/li&gt;
+&lt;li&gt;针对所有Cache实例和方法缓存的自动统计&lt;/li&gt;
+&lt;li&gt;Key的生成策略和Value的序列化策略是可以配置的&lt;/li&gt;
+&lt;li&gt;分布式缓存自动刷新，分布式锁 (2.2+)&lt;/li&gt;
+&lt;li&gt;异步Cache API (2.2+，使用Redis的lettuce客户端时)&lt;/li&gt;
+&lt;li&gt;Spring Boot支持&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;基本使用&#34;&gt;基本使用&lt;/h2&gt;
+&lt;h3 id=&#34;1-maven依赖&#34;&gt;1. maven依赖&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;com.alicp.jetcache&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;jetcache-starter-redis&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;2.5.11&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-springboot配置&#34;&gt;2. springboot配置&lt;/h3&gt;
+&lt;h4 id=&#34;配置文件&#34;&gt;配置文件&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;# 采用Java序列化存储
+jetcache.remote.default.valueDecoder = java
+# Key的转换器
+jetcache.remote.default.keyConvertor = fastjson
+# 是否加入缓存key前缀
+jetcache.areaInCacheName = false
+jetcache.remote.default.valueEncoder = java
+# 缓存类型。tair、redis为当前支持的远程缓存；linkedhashmap、caffeine为当前支持的本地缓存类型
+jetcache.local.default.type = linkedhashmap
+# 控制台输出统计数据，统计间隔，0表示不统计
+jetcache.statIntervalMinutes = 15
+jetcache.local.default.keyConvertor = fastjson
+jetcache.remote.default.uri = redis://192.168.0.210:6379/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中：remote 表示远程缓存，local表示本地缓存&lt;/p&gt;
+&lt;h4 id=&#34;启动类&#34;&gt;启动类&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@SpringBootApplication
+@EnableMethodCache(basePackages = &amp;quot;com.cxytiandi.jetcache&amp;quot;)
+@EnableCreateCacheAnnotation
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中：&lt;br&gt;
+@EnableMethodCache 用于激活@Cached注解的使用，&lt;br&gt;
+@EnableCreateCacheAnnotation 用于激活@CreateCache注解的使用&lt;/p&gt;
+&lt;h4 id=&#34;定义一个简单的实体类来作为数据的缓存必须实现serializable接口&#34;&gt;定义一个简单的实体类来作为数据的缓存，必须实现Serializable接口。&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Data
+public class User implements Serializable {
+
+	private Long id;
+	
+	private String name;
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;createcache使用&#34;&gt;@CreateCache使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@CreateCache(expire = 100)
+private Cache&amp;lt;Long, User&amp;gt; userCache;
+
+User user = new User();
+user.setId(1L);
+user.setName(&amp;quot;yinjihuan&amp;quot;);
+// 新增缓存
+userCache.put(1L, user);
+
+// 删除缓存
+userCache.remove(1L);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用起来很简单，就像使用map一样，@CreateCache中有很多配置需要我们自己去指定，不指定则使用默认的，关于配置请查看文档：&lt;a href=&#34;https://github.com/alibaba/jetcache/wiki/CreateCache_CN&#34;&gt;https://github.com/alibaba/jetcache/wiki/CreateCache_CN&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;cached使用&#34;&gt;@Cached使用&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;@Cached(name=&amp;quot;getUser.&amp;quot;, key=&amp;quot;#id&amp;quot;, expire = 8, cacheType=CacheType.BOTH)
+@Override
+public User getUser(Long id) {
+	User user = new User();
+	user.setId(1L);
+	user.setName(&amp;quot;yinjihuan&amp;quot;);
+	return user;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;name：缓存名称&lt;/li&gt;
+&lt;li&gt;key：缓存key,追加到name后面构成唯一的缓存key, 使用SpEL指定key，如果没有指定会根据所有参数自动生成。&lt;/li&gt;
+&lt;li&gt;expire：缓存失效时间&lt;/li&gt;
+&lt;li&gt;cacheType：缓存的类型，包括CacheType.REMOTE、CacheType.LOCAL、CacheType.BOTH。如果定义为BOTH，会使用LOCAL和REMOTE组合成两级缓存&lt;br&gt;
+更多配置的介绍请查看文档：&lt;a href=&#34;https://github.com/alibaba/jetcache/wiki/MethodCache_CN&#34;&gt;https://github.com/alibaba/jetcache/wiki/MethodCache_CN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今天的介绍就到这里，使用起来还是很方便的，关于更多的功能大家自行去尝试吧，比如缓存定时刷新，缓存命中率统计，自定义序列化方式等等。&lt;/p&gt;
+">JetCache 缓存框架</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/js-dao-chu-excel/"" data-c="
+          &lt;blockquote&gt;
+&lt;p&gt;在我们开发项目的过程中，应该都会遇到 excel 导出功能。那么现在我对 excel 导出方法做如下的记录，方便以后查看，并且分享给大家。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- more --&gt;
+&lt;h2 id=&#34;一-纯-js-导出-excel&#34;&gt;一、纯 JS 导出 EXCEL&lt;/h2&gt;
+&lt;p&gt;我们在开发过程中，或多或少会遇到不需要调用接口来导出 EXCEL 的情况，那么可以参照如下代码，实现前端纯 JS 导出 EXCEL。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;export function tableToExcel(jsonData, fileName) {
+  let str = &#39;&#39;;
+  //循环遍历，每行加入tr标签，每个单元格加td标签
+  for (let i = 0; i &amp;lt; jsonData.length; i++) {
+    // 数据列标题
+    if (i === 0) {
+      str += &#39;&amp;lt;tr&amp;gt;&#39;;
+      for (let item in jsonData[i]) {
+        //增加\t为了不让表格显示科学计数法或者其他格式
+        str += `&amp;lt;td&amp;gt;${item + &#39;\t&#39;}&amp;lt;/td&amp;gt;`;
+      }
+      str += &#39;&amp;lt;/tr&amp;gt;&#39;;
+    }
+    // 数据内容
+    str += &#39;&amp;lt;tr&amp;gt;&#39;;
+    for (let item in jsonData[i]) {
+      //增加\t为了不让表格显示科学计数法或者其他格式
+      str += `&amp;lt;td&amp;gt;${jsonData[i][item] + &#39;\t&#39;}&amp;lt;/td&amp;gt;`;
+    }
+    str += &#39;&amp;lt;/tr&amp;gt;&#39;;
+  }
+  // Worksheet名
+  let worksheet = &#39;Sheet1&#39;;
+  let uri = &#39;data:application/vnd.ms-excel;base64,&#39;;
+
+  // 下载的表格模板数据
+  let template = `&amp;lt;html xmlns:o=&amp;quot;urn:schemas-microsoft-com:office:office&amp;quot;
+      xmlns:x=&amp;quot;urn:schemas-microsoft-com:office:excel&amp;quot;
+      xmlns=&amp;quot;http://www.w3.org/TR/REC-html40&amp;quot;&amp;gt;
+      &amp;lt;head&amp;gt;&amp;lt;!--[if gte mso 9]&amp;gt;&amp;lt;xml&amp;gt;&amp;lt;x:ExcelWorkbook&amp;gt;&amp;lt;x:ExcelWorksheets&amp;gt;&amp;lt;x:ExcelWorksheet&amp;gt;
+        &amp;lt;x:Name&amp;gt;${worksheet}&amp;lt;/x:Name&amp;gt;
+        &amp;lt;x:WorksheetOptions&amp;gt;&amp;lt;x:DisplayGridlines/&amp;gt;&amp;lt;/x:WorksheetOptions&amp;gt;&amp;lt;/x:ExcelWorksheet&amp;gt;
+        &amp;lt;/x:ExcelWorksheets&amp;gt;&amp;lt;/x:ExcelWorkbook&amp;gt;&amp;lt;/xml&amp;gt;&amp;lt;![endif]--&amp;gt;
+        &amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;table&amp;gt;${str}&amp;lt;/table&amp;gt;&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;`;
+        
+        
+  // 直接下载（此方法不能自定义文件名）
+  // window.location.href = uri + base64(template)
+
+  // 通过创建a标签下载（此方法可以自定义文件名）
+  let a = document.createElement(&#39;a&#39;);
+  a.href = uri + base64(template);
+  a.download = `${fileName}_${new Date().toLocaleString()}.xlsx`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+
+}
+
+// 输出base64编码
+function base64(s) {
+  return window.btoa(unescape(encodeURIComponent(s)))
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;二-通过接口导出-excel&#34;&gt;二、通过接口导出 EXCEL&lt;/h2&gt;
+&lt;p&gt;当我们的导出数据需要从后端获取时，可以通过如下方式进行导出。&lt;br&gt;
+本例使用了 axios 请求服务端数据，如过是其他方式类似，请看如下代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;exportExcel(url, data, fileName) {
+    return axios({
+&amp;lt;!-- more --&amp;gt;
+
+      url: url,
+      baseURL: baseApi,
+      method: &#39;post&#39;,
+      data: JSON.stringify(data),
+      responseType: &#39;blob&#39;,
+      headers: {
+        &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;,
+        &#39;content-type&#39;: &#39;application/json; charset=utf-8&#39;
+      }
+    }).then((res) =&amp;gt; {
+      if (res.status === 200) {
+        let tempBlob = new Blob([res.data, {type :&#39;application/vnd.ms-excel:charset=utf-8&#39;}]);
+        let targetUrl = window.URL.createObjectURL(tempBlob);
+        let a = document.createElement(&#39;a&#39;);
+        a.href = targetUrl;
+        a.download = `${fileName}_${new Date().toLocaleString()}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else {
+        console.log(&amp;quot;请求资源失败&amp;quot;)
+      }
+    }).catch(e=&amp;gt;console.log(e))
+  },
+&lt;/code&gt;&lt;/pre&gt;
+">JS 导出 Excel</a>
+      </div>
+      
+      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/ju-yuan-ji/"" data-c="
           &lt;h1 id=&#34;链路相关环境&#34;&gt;链路相关环境&lt;/h1&gt;
 &lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;测试环境（资源有限）
@@ -1770,13 +1970,85 @@ SkywalkingWEB：http://10.1.12.114:8080/
 
 Skywalking采集：10.1.12.114:12800/11800
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;juno环境&#34;&gt;JUNO环境&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;服务器：
+10.1.12.174  root Juno@123  下载和ZK
+10.1.12.175  root Juno@123  下载和ZK
+10.1.12.176  root Juno@123  下载和ZK
+
+10.1.12.51  root   5tgbNHY6   校验服务
+10.1.12.52  root   5tgbNHY6   校验服务
+10.1.12.53  root   5tgbNHY6    校验服务
+
+10.1.12.54  root   hundsun@1    nginx
+10.1.12.55  root   hundsun@1    xxl-job
+10.1.12.56  root   hundsun@1    xxl-job
+
+10.1.12.57  root   hundsun@1    common服务
+
+10.106.1.96  root   hundsun@juno    主服务
+10.106.1.97 root Juno@denghc    rabbitmq
+10.106.1.98 administrator Juno@data123  共享目录和ES
+10.106.1.99 root Juno@denghc  
+
+
+
+数据库：
+测试环境：
+JYP SQL SERVER 10.106.1.101（旧） 测试库：
+主机：10.1.5.121
+账号：JunoDataTest
+密码：Jdt1202
+
+JYP SQL SERVER 10.106.1.101（新） 测试库：
+主机：10.106.1.101
+账号：JunoDataTest
+密码：Jdt1202
+
+JUNO MySQL 10.1.5.167 配置测试库：
+主机：10.106.1.96
+端口：3306
+账号：root
+密码：juno@123
+
+
+
+生产环境：
+JYP SQL SERVER 10.101.0.201 生产库：
+主机：10.101.0.201
+账号：juno_user
+密码：nbbm_345
+JYP SQL SERVER 10.101.0.191 生产库：
+主机：10.101.0.191
+账号：juno_user
+密码：nbbm_345
+JYP SQL SERVER 10.101.0.164 生产库：
+主机：10.101.0.164
+账号：CS_READ
+密码：CS_READ#123
+
+JUNO MySQL 10.102.0.118 配置生产库：
+主机：10.102.0.118
+端口：6447
+账号：junoro
+密码：Gildata@123
+
+&lt;/code&gt;&lt;/pre&gt;
 ">聚源记录</a>
       </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/ju-yuan-ji-lu/"" data-c="
-          &lt;h2 id=&#34;20210531~20210604&#34;&gt;2021.05.31~2021.06.04&lt;/h2&gt;
+          &lt;h2 id=&#34;20210607~20210611&#34;&gt;2021.06.07~2021.06.11&lt;/h2&gt;
 &lt;h4 id=&#34;本周完成工作&#34;&gt;本周完成工作:&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Confluence 上填写链路查询相关文档&lt;/li&gt;
+&lt;li&gt;开展 Juno 需求会议，确定本周工作目标&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;本周工作总结&#34;&gt;本周工作总结:&lt;/h4&gt;
+&lt;h4 id=&#34;下周工作计划&#34;&gt;下周工作计划:&lt;/h4&gt;
+&lt;h2 id=&#34;20210531~20210604&#34;&gt;2021.05.31~2021.06.04&lt;/h2&gt;
+&lt;h4 id=&#34;本周完成工作-2&#34;&gt;本周完成工作:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;全平台全时间轴链路查询接口及自测&lt;/li&gt;
 &lt;li&gt;单个平台链路查询接口及自测&lt;/li&gt;
@@ -1785,19 +2057,19 @@ Skywalking采集：10.1.12.114:12800/11800
 &lt;li&gt;使用StringTemplate优化ES查询参数构建复杂的问题&lt;/li&gt;
 &lt;li&gt;链路评审会议，确定需求细节及埋点字段&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;本周工作总结&#34;&gt;本周工作总结:&lt;/h4&gt;
+&lt;h4 id=&#34;本周工作总结-2&#34;&gt;本周工作总结:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;链路相关需求讨论，接口开发与自测&lt;/li&gt;
 &lt;li&gt;由于埋点数据未齐全，查询不到链路数据&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;下周工作计划&#34;&gt;下周工作计划:&lt;/h4&gt;
+&lt;h4 id=&#34;下周工作计划-2&#34;&gt;下周工作计划:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;代码认证通过，并申请git账号&lt;/li&gt;
 &lt;li&gt;了解JUNO项目相关业务&lt;/li&gt;
 &lt;li&gt;链路查询接口继续跟进&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;20210524~20210528&#34;&gt;2021.05.24~2021.05.28&lt;/h2&gt;
-&lt;h4 id=&#34;本周完成工作-2&#34;&gt;本周完成工作:&lt;/h4&gt;
+&lt;h4 id=&#34;本周完成工作-3&#34;&gt;本周完成工作:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;新员工编码考试&lt;/li&gt;
 &lt;li&gt;ES学习，包括ES原理及常用操作（简单查询，搜索查询，聚合查询等）并通过Kibana查询ES数据&lt;/li&gt;
@@ -1805,17 +2077,17 @@ Skywalking采集：10.1.12.114:12800/11800
 &lt;li&gt;链路分析平台原型评审，包括埋点及页面功能的讨论&lt;/li&gt;
 &lt;li&gt;链路分析查询逻辑梳理，链路查询接口编写&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;本周工作总结-2&#34;&gt;本周工作总结:&lt;/h4&gt;
+&lt;h4 id=&#34;本周工作总结-3&#34;&gt;本周工作总结:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;完成新员工编码考试，并搭建上岗测试项目&lt;/li&gt;
 &lt;li&gt;链路分析平台原型评审&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;下周工作计划-2&#34;&gt;下周工作计划:&lt;/h4&gt;
+&lt;h4 id=&#34;下周工作计划-3&#34;&gt;下周工作计划:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;链路分析查询接口完善&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;20210517~20210521&#34;&gt;2021.05.17~2021.05.21&lt;/h2&gt;
-&lt;h4 id=&#34;本周完成工作-3&#34;&gt;本周完成工作:&lt;/h4&gt;
+&lt;h4 id=&#34;本周完成工作-4&#34;&gt;本周完成工作:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;新员工入职手续办理，开发工具及开发环境安装&lt;/li&gt;
 &lt;li&gt;阅读 Confluence 知识库中涉及到项目相关的资料&lt;/li&gt;
@@ -1823,12 +2095,12 @@ Skywalking采集：10.1.12.114:12800/11800
 &lt;li&gt;学习 Kafka，编写测试 demo&lt;/li&gt;
 &lt;li&gt;研读任务平台代码，协助部署任务平台，发现脚本运行错误&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;本周工作总结-3&#34;&gt;本周工作总结:&lt;/h4&gt;
+&lt;h4 id=&#34;本周工作总结-4&#34;&gt;本周工作总结:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;入职环境配置&lt;/li&gt;
 &lt;li&gt;项目资料学习&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id=&#34;下周工作计划-3&#34;&gt;下周工作计划:&lt;/h4&gt;
+&lt;h4 id=&#34;下周工作计划-4&#34;&gt;下周工作计划:&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;上岗考试准备&lt;/li&gt;
 &lt;li&gt;参与项目培训，深入了解项目&lt;/li&gt;
@@ -1936,33 +2208,6 @@ docker logs -f  consul-server
       </div>
       
       <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/hello-gridea/"" data-c="
-          &lt;p&gt;👏  欢迎使用 &lt;strong&gt;Gridea&lt;/strong&gt; ！&lt;br&gt;
-✍️  &lt;strong&gt;Gridea&lt;/strong&gt; 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...&lt;/p&gt;
-&lt;!-- more --&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/getgridea/gridea&#34;&gt;Github&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;https://gridea.dev/&#34;&gt;Gridea 主页&lt;/a&gt;&lt;br&gt;
-&lt;a href=&#34;http://fehey.com/&#34;&gt;示例网站&lt;/a&gt;&lt;/p&gt;
-&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://www.cxlsky.com/post-images/1622708559365.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-&lt;h2 id=&#34;特性&#34;&gt;特性👇&lt;/h2&gt;
-&lt;p&gt;📝  你可以使用最酷的 &lt;strong&gt;Markdown&lt;/strong&gt; 语法，进行快速创作&lt;/p&gt;
-&lt;p&gt;🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片&lt;/p&gt;
-&lt;p&gt;🏷️  你可以对文章进行标签分组&lt;/p&gt;
-&lt;p&gt;📋  你可以自定义菜单，甚至可以创建外部链接菜单&lt;/p&gt;
-&lt;p&gt;💻  你可以在 &lt;strong&gt;Windows&lt;/strong&gt;，&lt;strong&gt;MacOS&lt;/strong&gt; 或 &lt;strong&gt;Linux&lt;/strong&gt; 设备上使用此客户端&lt;/p&gt;
-&lt;p&gt;🌎  你可以使用 &lt;strong&gt;𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌&lt;/strong&gt; 或 &lt;strong&gt;Coding Pages&lt;/strong&gt; 向世界展示，未来将支持更多平台&lt;/p&gt;
-&lt;p&gt;💬  你可以进行简单的配置，接入 &lt;a href=&#34;https://github.com/gitalk/gitalk&#34;&gt;Gitalk&lt;/a&gt; 或 &lt;a href=&#34;https://github.com/SukkaW/DisqusJS&#34;&gt;DisqusJS&lt;/a&gt; 评论系统&lt;/p&gt;
-&lt;p&gt;🇬🇧  你可以使用&lt;strong&gt;中文简体&lt;/strong&gt;或&lt;strong&gt;英语&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力&lt;/p&gt;
-&lt;p&gt;🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步&lt;/p&gt;
-&lt;p&gt;🌱 当然 &lt;strong&gt;Gridea&lt;/strong&gt; 还很年轻，有很多不足，但请相信，它会不停向前 🏃&lt;/p&gt;
-&lt;p&gt;未来，它一定会成为你离不开的伙伴&lt;/p&gt;
-&lt;p&gt;尽情发挥你的才华吧！&lt;/p&gt;
-&lt;p&gt;😘 Enjoy~&lt;/p&gt;
-">Hello Gridea</a>
-      </div>
-      
-      <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/远程事务使用说明/"" data-c="
           &lt;h2 id=&#34;1在git下载seata&#34;&gt;1.在git下载seata&lt;/h2&gt;
 &lt;p&gt;地址：&lt;a href=&#34;http://121.5.101.66:8882/city-management/seata.git&#34;&gt;http://121.5.101.66:8882/city-management/seata.git&lt;/a&gt;&lt;/p&gt;
@@ -2050,11 +2295,18 @@ public void testT() {
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://www.cxlsky.com/post/about/"" data-c="
-          &lt;p&gt;&lt;img src=&#34;https://www.cxlsky.com/post-images/1622706832788.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&amp;gt; 欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
+          &lt;blockquote&gt;
+&lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
+&lt;p&gt;用于记录学习✏️、生活🌞、感悟😃&lt;/p&gt;
 &lt;h2 id=&#34;博主是谁&#34;&gt;👨‍💻 博主是谁&lt;/h2&gt;
+&lt;p&gt;一名全栈工程师🐩，后端主攻 JAVA🍮，前端主攻 Vue.js👀&lt;/p&gt;
 &lt;h2 id=&#34;兴趣爱好&#34;&gt;⛹ 兴趣爱好&lt;/h2&gt;
+&lt;p&gt;篮球🏀、吉他🎸&lt;/p&gt;
 &lt;h2 id=&#34;联系我呀&#34;&gt;📬 联系我呀&lt;/h2&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://www.cxlsky.com/post-images/1623028870184.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;如有任何疑问，可以在下方评论与我互动&lt;/p&gt;
 ">关于</a>
       </div>
       
