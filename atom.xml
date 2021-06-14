@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.cxlsky.com</id>
     <title>longlongago</title>
-    <updated>2021-06-14T10:40:45.238Z</updated>
+    <updated>2021-06-14T10:43:58.643Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.cxlsky.com"/>
     <link rel="self" href="https://www.cxlsky.com/atom.xml"/>
@@ -16,6 +16,29 @@
         <link href="https://www.cxlsky.com/post/cloud-dragon-xiang-mu-jie-shao/">
         </link>
         <updated>2021-06-14T10:38:41.000Z</updated>
+        <summary type="html"><![CDATA[<p align="center">
+  <strong>云龙  Cloud Dragon</strong>
+</p>
+<p align="center">
+	<strong>适合于企业级别的微服务开发脚手架，功能齐全，开箱即用，部署快捷</strong>
+</p>
+<p align="center">
+	<a target="_blank" href="https://gitter.im/dragon_cloud/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+		<img src="https://badges.gitter.im/dragon_cloud/community.svg" />
+	</a>
+    <a target="_blank" href="https://opensource.org/licenses/Apache-2.0">
+		<img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" />
+	</a>
+	<a target="_blank" href="https://travis-ci.org/cxl-sky/cloud-dragon">
+		<img src="https://travis-ci.org/cxl-sky/cloud-dragon.svg?branch=master" />
+	</a>
+</p>
+<hr>
+<h2 id="项目介绍">📚 项目介绍</h2>
+<p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构，后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI 为主。</p>
+<p>Cloud Dragon 使用 Oauth2 进行认证授权管理，采用 JWT + Redis 的方式控制令牌发放与销毁。<br>
+统一使用 Docker 部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，是一个非常适用的微服务快速开发脚手架。</p>
+]]></summary>
         <content type="html"><![CDATA[<p align="center">
   <strong>云龙  Cloud Dragon</strong>
 </p>
@@ -35,11 +58,10 @@
 </p>
 <hr>
 <h2 id="项目介绍">📚 项目介绍</h2>
-<p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构，<br>
-后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI 为主。</p>
+<p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构，后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI 为主。</p>
 <p>Cloud Dragon 使用 Oauth2 进行认证授权管理，采用 JWT + Redis 的方式控制令牌发放与销毁。<br>
-统一使用 Docker 部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，<br>
-是一个非常适用的微服务快速开发脚手架。</p>
+统一使用 Docker 部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，是一个非常适用的微服务快速开发脚手架。</p>
+<!-- more -->
 <h3 id="cloud-dragon-主要技术栈及功能规划">Cloud Dragon 主要技术栈及功能规划：</h3>
 <table>
 <thead>
