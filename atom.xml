@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.cxlsky.com</id>
     <title>longlongago</title>
-    <updated>2021-06-14T16:00:29.681Z</updated>
+    <updated>2021-06-15T06:04:57.453Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.cxlsky.com"/>
     <link rel="self" href="https://www.cxlsky.com/atom.xml"/>
@@ -36,6 +36,17 @@
 		<img src="https://img.shields.io/badge/QQ%E7%BE%A4-878510003-blue" />
 	</a>
 </p>
+<hr>
+<blockquote>
+<p>目前项目处于开发阶段，部分功能已经可以使用，后续会逐步完成其他规划内容，并完善项目文档，如果你在使用过程中遇到任何问题，可以通过 QQ 群聊联系我，<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a> 加入群聊。</p>
+</blockquote>
+<h2 id="项目介绍">📚 项目介绍</h2>
+<p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构， 后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI 为主。</p>
+<p>Cloud Dragon 使用 Oauth2 进行认证授权管理，采用 JWT + Redis 的方式控制令牌发放与销毁。 统一使用 Docker 部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，是一个非常适用的微服务快速开发脚手架。</p>
+<ul>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
+</ul>
 ]]></summary>
         <content type="html"><![CDATA[<p align="center">
   <strong>云龙  Cloud Dragon</strong>
@@ -57,20 +68,18 @@
 		<img src="https://img.shields.io/badge/QQ%E7%BE%A4-878510003-blue" />
 	</a>
 </p>
-<!-- more -->
 <hr>
 <blockquote>
-<p>目前项目处于开发阶段，部分功能已经可以使用，后续会逐步完成其他规划内容，并完善项目文档，如果你在使用过程中遇到任何问题，可以通过 QQ 群聊联系我，<br>
-<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a><br>
-加入群聊。</p>
+<p>目前项目处于开发阶段，部分功能已经可以使用，后续会逐步完成其他规划内容，并完善项目文档，如果你在使用过程中遇到任何问题，可以通过 QQ 群聊联系我，<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a> 加入群聊。</p>
 </blockquote>
 <h2 id="项目介绍">📚 项目介绍</h2>
 <p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构， 后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI 为主。</p>
 <p>Cloud Dragon 使用 Oauth2 进行认证授权管理，采用 JWT + Redis 的方式控制令牌发放与销毁。 统一使用 Docker 部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，是一个非常适用的微服务快速开发脚手架。</p>
 <ul>
-<li><a href="">点击快速开始</a></li>
-<li><a href="">开发指南</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
 </ul>
+<!-- more -->
 <h2 id="主要功能及规划">主要功能及规划</h2>
 <h3 id="1-主要技术栈及规划">1. 主要技术栈及规划：</h3>
 <table>
@@ -359,10 +368,8 @@
 <table>
 <thead>
 <tr>
-<th>服务分类</th>
 <th>服务名</th>
 <th>进度</th>
-<th>依赖基础组件</th>
 <th>简介</th>
 <th>应用地址</th>
 <th>文档</th>
@@ -370,73 +377,50 @@
 </thead>
 <tbody>
 <tr>
-<td>web</td>
 <td>dragon-web</td>
 <td>🏗</td>
-<td>vue3、element-ui</td>
 <td>前端管理页面</td>
 <td>http://localhost:10080</td>
 <td>待完善</td>
 </tr>
 <tr>
-<td>common</td>
-<td>基础公共依赖包</td>
-<td>✅</td>
-<td></td>
-<td>基础公共依赖包</td>
-<td>jar包引入</td>
-<td></td>
-</tr>
-<tr>
-<td>gateway</td>
 <td>gateway</td>
 <td>✅</td>
-<td>resource-server</td>
 <td>统一API网关，负责路由转发</td>
 <td>http://localhost:10081</td>
 <td>待完善</td>
 </tr>
 <tr>
-<td>auth</td>
 <td>auth-server</td>
 <td>✅</td>
-<td>mysql、redis</td>
 <td>认证服务，生成jwt</td>
 <td>http://localhost:10082</td>
 <td>待完善</td>
 </tr>
 <tr>
-<td>auth</td>
 <td>resource-server</td>
 <td>✅</td>
-<td>mysql、user-server</td>
 <td>授权服务，判断是否可以访问</td>
 <td>http://localhost:10083</td>
 <td>待完善</td>
 </tr>
 <tr>
-<td>application</td>
 <td>user-center</td>
 <td>🏗</td>
-<td>mysql</td>
 <td>用户中心，权限角色管理等</td>
 <td>http://localhost:10084</td>
 <td>待完善</td>
 </tr>
 <tr>
-<td>application</td>
 <td>upload-center</td>
 <td>🏗</td>
-<td>mysql、MinIO</td>
 <td>文件上传中心</td>
 <td>http://localhost:10085</td>
 <td>待完善</td>
 </tr>
 <tr>
-<td>application</td>
 <td>code-generate-center</td>
 <td>🏗</td>
-<td>mysql</td>
 <td>代码生成中心，快速生成前后端代码</td>
 <td>http://localhost:10086</td>
 <td>待完善</td>
@@ -447,19 +431,21 @@
 <td>...</td>
 <td>...</td>
 <td>...</td>
-<td>...</td>
-<td>...</td>
 </tr>
 </tbody>
 </table>
 <h2 id="联系交流">联系交流</h2>
 <h3 id="加入贡献代码">加入贡献代码</h3>
-<p>请入群 <a href="">请戳这里</a> 加群主微信。</p>
+<p><a href="">请戳这里</a> 加群主微信。</p>
 <h3 id="给作者-star-支持">给作者 Star 支持</h3>
 <p>如果你觉的有帮助到您，请帮忙点击右上角 star 支持我，您的支持是我的动力。</p>
 <h3 id="学习交流">学习交流</h3>
-<p>EMail：ustbcxl@163.com</p>
-<p>加群<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a></p>
+<ul>
+<li>邮箱：ustbcxl@163.com</li>
+<li>加群<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
+</ul>
 ]]></content>
     </entry>
     <entry>
