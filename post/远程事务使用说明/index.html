@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>远程事务配置 | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">远程事务配置</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-03-11</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://www.cxlsky.com/tag/fg01BD2D3/">
+                    Redis
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/SdB7sp6aNF/">
+                    微服务
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/4aTHC093mM/">
+                    JAVA
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="1在git下载seata">1.在git下载seata</h2>
+<p>地址：<a href="http://121.5.101.66:8882/city-management/seata.git">http://121.5.101.66:8882/city-management/seata.git</a></p>
+<h2 id="2启动seata">2.启动:seata</h2>
+<p>在seata文件夹中的bin有启动脚本 启动就行</p>
+<h2 id="3加入依赖">3.加入依赖</h2>
+<pre><code class="language-java">&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-alibaba-seata&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="4在需要远程事务的地方加载注解">4.在需要远程事务的地方加载注解</h2>
+<pre><code class="language-java">@GlobalTransactional
+@Override
+public void testT() {
+    Test1DO aDo = new Test1DO();
+    aDo.setName(&quot;123&quot;);
+    this.save(aDo);
+    Test2DTO dto = new Test2DTO();
+    dto.setName(aDo.getName());
+    test2Client.add(dto);
+}
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://www.cxlsky.com/post/mybatis常规配置/">
+              <h3 class="post-title">
+                下一篇：Mybatis常规配置
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

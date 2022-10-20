@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>JS 导出 Excel | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">JS 导出 Excel</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-06-07</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://www.cxlsky.com/tag/AdSwRs2rX/">
+                    前端技术
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/lrlqXUzmAL/">
+                    JS
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/mh2xXqrUTr/">
+                    Excel
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <blockquote>
+<p>在我们开发项目的过程中，应该都会遇到 excel 导出功能。那么现在我对 excel 导出方法做如下的记录，方便以后查看，并且分享给大家。</p>
+</blockquote>
+<!-- more -->
+<h2 id="一-纯-js-导出-excel">一、纯 JS 导出 EXCEL</h2>
+<p>我们在开发过程中，或多或少会遇到不需要调用接口来导出 EXCEL 的情况，那么可以参照如下代码，实现前端纯 JS 导出 EXCEL。</p>
+<pre><code class="language-javascript">export function tableToExcel(jsonData, fileName) {
+  let str = '';
+  //循环遍历，每行加入tr标签，每个单元格加td标签
+  for (let i = 0; i &lt; jsonData.length; i++) {
+    // 数据列标题
+    if (i === 0) {
+      str += '&lt;tr&gt;';
+      for (let item in jsonData[i]) {
+        //增加\t为了不让表格显示科学计数法或者其他格式
+        str += `&lt;td&gt;${item + '\t'}&lt;/td&gt;`;
+      }
+      str += '&lt;/tr&gt;';
+    }
+    // 数据内容
+    str += '&lt;tr&gt;';
+    for (let item in jsonData[i]) {
+      //增加\t为了不让表格显示科学计数法或者其他格式
+      str += `&lt;td&gt;${jsonData[i][item] + '\t'}&lt;/td&gt;`;
+    }
+    str += '&lt;/tr&gt;';
+  }
+  // Worksheet名
+  let worksheet = 'Sheet1';
+  let uri = 'data:application/vnd.ms-excel;base64,';
+
+  // 下载的表格模板数据
+  let template = `&lt;html xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;
+      xmlns:x=&quot;urn:schemas-microsoft-com:office:excel&quot;
+      xmlns=&quot;http://www.w3.org/TR/REC-html40&quot;&gt;
+      &lt;head&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;&lt;x:ExcelWorkbook&gt;&lt;x:ExcelWorksheets&gt;&lt;x:ExcelWorksheet&gt;
+        &lt;x:Name&gt;${worksheet}&lt;/x:Name&gt;
+        &lt;x:WorksheetOptions&gt;&lt;x:DisplayGridlines/&gt;&lt;/x:WorksheetOptions&gt;&lt;/x:ExcelWorksheet&gt;
+        &lt;/x:ExcelWorksheets&gt;&lt;/x:ExcelWorkbook&gt;&lt;/xml&gt;&lt;![endif]--&gt;
+        &lt;/head&gt;&lt;body&gt;&lt;table&gt;${str}&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;`;
+        
+        
+  // 直接下载（此方法不能自定义文件名）
+  // window.location.href = uri + base64(template)
+
+  // 通过创建a标签下载（此方法可以自定义文件名）
+  let a = document.createElement('a');
+  a.href = uri + base64(template);
+  a.download = `${fileName}_${new Date().toLocaleString()}.xlsx`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+
+}
+
+// 输出base64编码
+function base64(s) {
+  return window.btoa(unescape(encodeURIComponent(s)))
+}
+
+</code></pre>
+<h2 id="二-通过接口导出-excel">二、通过接口导出 EXCEL</h2>
+<p>当我们的导出数据需要从后端获取时，可以通过如下方式进行导出。<br>
+本例使用了 axios 请求服务端数据，如过是其他方式类似，请看如下代码：</p>
+<pre><code class="language-javascript">exportExcel(url, data, fileName) {
+    return axios({
+&lt;!-- more --&gt;
+
+      url: url,
+      baseURL: baseApi,
+      method: 'post',
+      data: JSON.stringify(data),
+      responseType: 'blob',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'content-type': 'application/json; charset=utf-8'
+      }
+    }).then((res) =&gt; {
+      if (res.status === 200) {
+        let tempBlob = new Blob([res.data, {type :'application/vnd.ms-excel:charset=utf-8'}]);
+        let targetUrl = window.URL.createObjectURL(tempBlob);
+        let a = document.createElement('a');
+        a.href = targetUrl;
+        a.download = `${fileName}_${new Date().toLocaleString()}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else {
+        console.log(&quot;请求资源失败&quot;)
+      }
+    }).catch(e=&gt;console.log(e))
+  },
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://www.cxlsky.com/post/注册中心Consul - 副本/">
+              <h3 class="post-title">
+                下一篇：注册中心Consul
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

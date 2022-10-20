@@ -1,0 +1,572 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Cloud Dragon 项目介绍 | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Cloud Dragon 项目介绍</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-06-14</span>
+            
+          </div>
+          <div class="post-content">
+            <p><img src="https://www.cxlsky.com/post-images/1666250871443.png" alt="" loading="lazy">Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构， 后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI<br>
+为主。</p>
+<p align="center">
+        <img src="https://oss.gagajiankang.com/cloud/logo.png" width="40px" syt height="40px" />
+</p>
+<p align="center">
+        <strong>云龙 Cloud Dragon</strong>
+</p>
+<p align="center">
+	<strong>适合于企业级别的微服务开发脚手架，功能齐全，开箱即用，部署快捷</strong>
+</p>
+<p align="center">
+	<a target="_blank" href="https://gitter.im/dragon_cloud/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+		<img src="https://badges.gitter.im/dragon_cloud/community.svg" />
+	</a>
+    <a target="_blank" href="https://opensource.org/licenses/Apache-2.0">
+		<img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" />
+	</a>
+	<a target="_blank" href="https://travis-ci.org/cxl-sky/cloud-dragon">
+		<img src="https://travis-ci.org/cxl-sky/cloud-dragon.svg?branch=master" />
+	</a>
+    <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&noverify=0">
+		<img src="https://img.shields.io/badge/QQ%E7%BE%A4-878510003-blue" />
+	</a>
+    <a target="_blank" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">
+		<img src="https://img.shields.io/badge/JDK-8+-green.svg" />
+	</a>
+	<a target="_blank" href="https://spring.io/projects/spring-boot">
+		<img src="https://img.shields.io/badge/spring%20boot-2.2.5-yellowgreen" />
+	</a>
+</p>
+<hr>
+<blockquote>
+<p>目前项目处于开发阶段，部分功能已经可以使用，后续会逐步完成其他规划内容，并完善项目文档，如果你在使用过程中遇到任何问题，可以通过 QQ 群聊联系我，<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a> 加入群聊。</p>
+</blockquote>
+<h2 id="项目介绍">📚 项目介绍</h2>
+<p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构， 后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI<br>
+为主。</p>
+<p>Cloud Dragon 使用 Oauth2 进行认证授权管理，采用 JWT + Redis 的方式控制令牌发放与销毁。 统一使用 Docker<br>
+部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，是一个非常适用的微服务快速开发脚手架。</p>
+<ul>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
+</ul>
+<h2 id="主要功能及规划">主要功能及规划</h2>
+<h3 id="1-主要技术栈及规划">1. 主要技术栈及规划：</h3>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>使用技术</th>
+<th>进度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注册中心</td>
+<td>Nacos</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>配置中心</td>
+<td>Nacos</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>消息中心</td>
+<td>Spring Cloud Stream + Rabbitmq</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>动态网关</td>
+<td>Spring Cloud Gateway</td>
+<td>✅</td>
+<td>多种维度的流量控制（服务、IP、用户等），后端可配置化</td>
+</tr>
+<tr>
+<td>认证中心</td>
+<td>Spring Cloud Security OAuth2</td>
+<td>✅</td>
+<td>发放 Token 服务（JWT）</td>
+</tr>
+<tr>
+<td>授权认证</td>
+<td>Spring Cloud Security OAuth2</td>
+<td>✅</td>
+<td>根据 Token 判断权限服务</td>
+</tr>
+<tr>
+<td>服务容错</td>
+<td>Spring Cloud Sentinel</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>服务调用</td>
+<td>Spring Cloud OpenFeign</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>对象存储</td>
+<td>Minio</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>任务调度</td>
+<td>XXL-Job</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>分库分表</td>
+<td>Sharding Sphere</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>数据权限</td>
+<td>Mybatis Plus</td>
+<td>🏗</td>
+<td>对原查询做增强，业务代码不用控制，即可实现。</td>
+</tr>
+<tr>
+<td>代码生成</td>
+<td></td>
+<td>🏗50%（后端代码生成完成，前端代码生成进行中）</td>
+<td>前后端代码的生成，支持Vue</td>
+</tr>
+<tr>
+<td>文档管理</td>
+<td>Swagger2</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>服务监控</td>
+<td>Spring Boot Admin</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>链路追踪</td>
+<td>SkyWalking</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>操作审计</td>
+<td></td>
+<td>🏗</td>
+<td>系统关键操作日志记录和查询</td>
+</tr>
+<tr>
+<td>日志管理</td>
+<td>ES + Kibana + Logstash</td>
+<td>🏗</td>
+<td>ELK</td>
+</tr>
+<tr>
+<td>监控告警</td>
+<td>Grafana</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>持续集成与部署</td>
+<td>Jenkins + Docker + Docker Compose</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>集群部署</td>
+<td>Jenkins + Docker Swarm</td>
+<td>🏗</td>
+<td>使用 Docker 原生集群部署管理工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-平台管理页面主要功能规划">2. 平台管理页面主要功能规划：</h3>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>使用技术</th>
+<th>进度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>用户是系统操作者，该功能主要完成系统用户配置。</td>
+</tr>
+<tr>
+<td>角色管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>角色菜单权限分配、设置角色按机构进行数据范围权限划分。</td>
+</tr>
+<tr>
+<td>菜单管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>配置系统菜单，操作权限，按钮权限标识等。</td>
+</tr>
+<tr>
+<td>部门管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>配置系统组织机构，树结构展现，可随意调整上下级。</td>
+</tr>
+<tr>
+<td>代码生成管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>用于生成系统页面代码，包括前端代码、后端代码</td>
+</tr>
+<tr>
+<td>统一文档管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>文档管理</td>
+</tr>
+<tr>
+<td>操作审计</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>系统关键操作日志记录和查询</td>
+</tr>
+<tr>
+<td>缓存管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>通过页面可视化管理缓存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="系统架构">🥞 系统架构</h2>
+<h3 id="系统架构图">系统架构图</h3>
+<blockquote>
+<p>待完善</p>
+</blockquote>
+<h3 id="项目服务">项目服务</h3>
+<blockquote>
+<p>以下服务均采用 Docker &amp; Docker Compose，支持一键部署。（待完善）</p>
+</blockquote>
+<h4 id="1-基础服务">1. 基础服务</h4>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>服务名</th>
+<th>端口</th>
+<th>进度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库</td>
+<td>mysql</td>
+<td>3306</td>
+<td>✅</td>
+<td>共用，各应用可建不同的 database</td>
+</tr>
+<tr>
+<td>KV缓存</td>
+<td>redis</td>
+<td>6379</td>
+<td>✅</td>
+<td>共用，原则上各应用单独实例</td>
+</tr>
+<tr>
+<td>消息中间件</td>
+<td>rabbitmq</td>
+<td>5672</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>注册与配置中心</td>
+<td>nacos</td>
+<td>8848</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>搜索引擎中间件</td>
+<td>elasticsearch</td>
+<td>9200</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>日志分析工具</td>
+<td>kibana</td>
+<td>5601</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>数据可视化工具</td>
+<td>grafana</td>
+<td>3000</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>对象存储服务</td>
+<td>MinIO</td>
+<td>9000</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2应用服务">2.应用服务</h4>
+<blockquote>
+<p>以下服务均需要依赖基础服务中的 nacos，务必确保 nacos 正常运行，项目的配置文件均保存在 nacos 配置中心统一管理，本地无配置<br>
+所有应用都需要进过网关，务必保证网关启动（开发环境调试可不做限制）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>服务名</th>
+<th>进度</th>
+<th>简介</th>
+<th>应用地址</th>
+<th>文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dragon-web</td>
+<td>✅</td>
+<td>前端管理页面（逐步完善中）</td>
+<td>http://localhost:18888</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>✅</td>
+<td>统一API网关，负责路由转发</td>
+<td>http://localhost:10081</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>auth-server</td>
+<td>✅</td>
+<td>认证服务，生成jwt</td>
+<td>http://localhost:10082</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>resource-server</td>
+<td>✅</td>
+<td>授权服务，判断是否可以访问</td>
+<td>http://localhost:10083</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>user-center</td>
+<td>✅</td>
+<td>用户中心，权限角色管理等（逐步完善中）</td>
+<td>http://localhost:10084</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>upload-center</td>
+<td>🏗</td>
+<td>文件上传中心</td>
+<td>http://localhost:10085</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>code-generate</td>
+<td>✅</td>
+<td>代码生成中心，快速生成前后端代码（逐步完善中）</td>
+<td>http://localhost:10086</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>未完待续</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="项目功能预览">项目功能预览</h2>
+<h3 id="登录页面"><strong>登录页面</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/login.jpg" width="576px" syt height="324px" />
+<h3 id="用户管理"><strong>用户管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/user.jpg" width="576px" syt height="324px" />
+<h3 id="角色管理"><strong>角色管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/role.jpg" width="576px" syt height="324px" />
+<h3 id="菜單管理"><strong>菜單管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/menu.jpg" width="576px" syt height="324px" />
+<h3 id="接口管理"><strong>接口管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/api.jpg" width="576px" syt height="324px" />
+<h3 id="注冊中心"><strong>注冊中心</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/nacos.jpg" width="576px" syt height="324px" />
+<h3 id="文件上传"><strong>文件上传</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/minio.jpg" width="576px" syt height="324px" />
+<p><strong>更多预览图，尽请期待</strong></p>
+<h2 id="联系交流">联系交流</h2>
+<h3 id="加入贡献代码">加入贡献代码</h3>
+<p><a href="">请戳这里</a> 加群主微信。</p>
+<h3 id="给作者-star-支持">给作者 Star 支持</h3>
+<p>如果你觉的有帮助到您，请帮忙点击右上角 star 支持我，您的支持是我的动力。</p>
+<h3 id="学习交流">学习交流</h3>
+<ul>
+<li>邮箱：ustbcxl@163.com</li>
+<li></li>
+</ul>
+<p>加群<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a></p>
+<ul>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
+</ul>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://www.cxlsky.com/post/jetcache-huan-cun-kuang-jia/">
+              <h3 class="post-title">
+                下一篇：JetCache 缓存框架
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

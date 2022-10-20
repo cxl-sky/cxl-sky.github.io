@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Mybatis常规配置 | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Mybatis常规配置</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-02-11</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://www.cxlsky.com/tag/4aTHC093mM/">
+                    JAVA
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/M8V8EHYlKn/">
+                    Mybatis
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="一-mybatis-configxml配置">一、mybatis-config.xml配置</h2>
+<p>由于开发新项目，需要对mybatis做配置，这些配置可以放在系统的yml文件里，也可以单独放在一个xml文件里，本示例放到了单独文件，如下所示：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+
+	&lt;!-- 全局参数 --&gt;
+	&lt;settings&gt;
+		&lt;!-- 使全局的映射器启用或禁用缓存。 --&gt;
+		&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 --&gt;
+		&lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。 --&gt;
+		&lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 是否允许单条sql 返回多个数据集 (取决于驱动的兼容性) default:true --&gt;
+		&lt;setting name=&quot;multipleResultSetsEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 是否可以使用列的别名 (取决于驱动的兼容性) default:true --&gt;
+		&lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 允许JDBC 生成主键。需要驱动器支持。如果设为了true，这个设置将强制使用被生成的主键，有一些驱动器不兼容不过仍然可以执行。 default:false --&gt;
+		&lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;false&quot; /&gt;
+
+		&lt;!-- 指定 MyBatis 如何自动映射 数据基表的列 NONE：不隐射 PARTIAL:部分 FULL:全部 --&gt;
+		&lt;setting name=&quot;autoMappingBehavior&quot; value=&quot;PARTIAL&quot; /&gt;
+
+		&lt;!-- 这是默认的执行类型 （SIMPLE: 简单； REUSE: 执行器可能重复使用prepared statements语句；BATCH: 
+			执行器可以重复执行语句和批量更新） --&gt;
+		&lt;setting name=&quot;defaultExecutorType&quot; value=&quot;SIMPLE&quot; /&gt;
+
+		&lt;!-- 使用驼峰命名法转换字段。 --&gt;
+		&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 设置本地缓存范围 session:就会有数据的共享 statement:语句范围 (这样就不会有数据的共享 ) defalut:session --&gt;
+		&lt;setting name=&quot;localCacheScope&quot; value=&quot;SESSION&quot; /&gt;
+
+		&lt;!-- 设置但JDBC类型为空时,某些驱动程序 要指定值,default:OTHER，插入空值时不需要指定类型 --&gt;
+		&lt;setting name=&quot;jdbcTypeForNull&quot; value=&quot;NULL&quot; /&gt;
+		&lt;setting name=&quot;callSettersOnNulls&quot; value=&quot;true&quot; /&gt;
+		&lt;!-- 显示sql日志 --&gt;
+		&lt;!--&lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;--&gt;
+
+	&lt;/settings&gt;
+	
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="二-系统-applicationyml-配置">二、系统 application.yml 配置</h2>
+<pre><code class="language-yaml">mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:mapper/*.xml
+</code></pre>
+
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

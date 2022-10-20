@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>聚源周报 | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">聚源周报</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-06-04</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://www.cxlsky.com/tag/NmultAXjD/">
+                    工作记录
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="20210607~20210611">2021.06.07~2021.06.11</h2>
+<h4 id="本周完成工作">本周完成工作:</h4>
+<ol>
+<li>在 Confluence 上填写链路查询相关文档</li>
+<li>开展 Juno 需求会议，确定本周工作目标</li>
+</ol>
+<h4 id="本周工作总结">本周工作总结:</h4>
+<h4 id="下周工作计划">下周工作计划:</h4>
+<h2 id="20210531~20210604">2021.05.31~2021.06.04</h2>
+<h4 id="本周完成工作-2">本周完成工作:</h4>
+<ol>
+<li>全平台全时间轴链路查询接口及自测</li>
+<li>单个平台链路查询接口及自测</li>
+<li>平台链路分组列表及自测</li>
+<li>使用策略模式优化，将不同的查询方法（资源id查询，平台查询）分为不同的策略</li>
+<li>使用StringTemplate优化ES查询参数构建复杂的问题</li>
+<li>链路评审会议，确定需求细节及埋点字段</li>
+</ol>
+<h4 id="本周工作总结-2">本周工作总结:</h4>
+<ol>
+<li>链路相关需求讨论，接口开发与自测</li>
+<li>由于埋点数据未齐全，查询不到链路数据</li>
+</ol>
+<h4 id="下周工作计划-2">下周工作计划:</h4>
+<ol>
+<li>代码认证通过，并申请git账号</li>
+<li>了解JUNO项目相关业务</li>
+<li>链路查询接口继续跟进</li>
+</ol>
+<h2 id="20210524~20210528">2021.05.24~2021.05.28</h2>
+<h4 id="本周完成工作-3">本周完成工作:</h4>
+<ol>
+<li>新员工编码考试</li>
+<li>ES学习，包括ES原理及常用操作（简单查询，搜索查询，聚合查询等）并通过Kibana查询ES数据</li>
+<li>链路分析平台客户端查询项目搭建</li>
+<li>链路分析平台原型评审，包括埋点及页面功能的讨论</li>
+<li>链路分析查询逻辑梳理，链路查询接口编写</li>
+</ol>
+<h4 id="本周工作总结-3">本周工作总结:</h4>
+<ol>
+<li>完成新员工编码考试，并搭建上岗测试项目</li>
+<li>链路分析平台原型评审</li>
+</ol>
+<h4 id="下周工作计划-3">下周工作计划:</h4>
+<ol>
+<li>链路分析查询接口完善</li>
+</ol>
+<h2 id="20210517~20210521">2021.05.17~2021.05.21</h2>
+<h4 id="本周完成工作-4">本周完成工作:</h4>
+<ol>
+<li>新员工入职手续办理，开发工具及开发环境安装</li>
+<li>阅读 Confluence 知识库中涉及到项目相关的资料</li>
+<li>学习 Sharding Sphere 并查看任务平台代码相关配置</li>
+<li>学习 Kafka，编写测试 demo</li>
+<li>研读任务平台代码，协助部署任务平台，发现脚本运行错误</li>
+</ol>
+<h4 id="本周工作总结-4">本周工作总结:</h4>
+<ol>
+<li>入职环境配置</li>
+<li>项目资料学习</li>
+</ol>
+<h4 id="下周工作计划-4">下周工作计划:</h4>
+<ol>
+<li>上岗考试准备</li>
+<li>参与项目培训，深入了解项目</li>
+</ol>
+
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

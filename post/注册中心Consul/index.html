@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>注册中心Consul | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">注册中心Consul</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-02-11</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://www.cxlsky.com/tag/SdB7sp6aNF/">
+                    微服务
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/aoNDPBEoVc/">
+                    注册中心
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://www.cxlsky.com/tag/4aTHC093mM/">
+                    JAVA
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>在微服务的开发过程中，注册中心是一个非常重要的角色，它可以帮助我们发现其他的服务。注册中心也有很多种类，下面主要介绍一下我使用过的 Consul。</p>
+<!-- more -->
+<h2 id="一-为什么选择consul">一、为什么选择consul</h2>
+<p>我们知道 Eureka 2.X 遇到困难停止开发了，但其实对国内的用户影响甚小，一方面国内大都使用的是 Eureka 1.X 系列，另一方面 Spring Cloud 支持很多服务发现的软件，Eureka 只是其中之一，下面是 Spring Cloud 支持的服务发现软件以及特性对比：</p>
+<figure data-type="image" tabindex="1"><img src="https://imgs.cxlsky.com/image1560846242657.jpg" alt="registry.jpg" loading="lazy"></figure>
+<p>在以上服务发现的软件中，Euerka 和 Consul 使用最为广泛。但由于eureka已经停止更新，所以这里选用consul。</p>
+<h2 id="二-consul介绍">二、Consul介绍</h2>
+<p>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其它分布式服务注册与发现的方案，Consul 的方案更“一站式”，内置了服务注册与发现框 架、分布一致性协议实现、健康检查、Key/Value 存储、多数据中心方案，不再需要依赖其它工具（比如 ZooKeeper 等）。使用起来也较 为简单。Consul 使用 Go 语言编写，因此具有天然可移植性(支持Linux、windows和Mac OS X)；安装包仅包含一个可执行文件，方便部署，与 Docker 等轻量级容器可无缝配合。</p>
+<h3 id="21-consul优势">2.1 consul优势</h3>
+<p>1、使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft。<br>
+2、支持多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障,而其部署则需要考虑网络延迟, 分片等情况等。 zookeeper 和 etcd 均不提供多数据中心功能的支持。<br>
+3、支持健康检查。 etcd 不提供此功能。<br>
+4、支持 http 和 dns 协议接口。 zookeeper 的集成较为复杂, etcd 只支持 http 协议。<br>
+5、官方提供 web 管理界面, etcd 无此功能。<br>
+6、综合比较, Consul 作为服务注册和配置管理的新星, 比较值得关注和研究。</p>
+<h3 id="22-consul角色">2.2 Consul角色</h3>
+<p>1、client: 客户端, 无状态, 将 HTTP 和 DNS 接口请求转发给局域网内的服务端集群。<br>
+2、server: 服务端, 保存配置信息, 高可用集群, 在局域网内与本地客户端通讯, 通过广域网与其它数据中心通讯。 每个数据中心的 server 数量推荐为 3 个或是 5 个。</p>
+<p>Consul 客户端、服务端还支持夸中心的使用，更加提高了它的高可用性。</p>
+<figure data-type="image" tabindex="2"><img src="https://imgs.cxlsky.com/image1560846818889.jpg" alt="consul.jpg" loading="lazy"></figure>
+<h3 id="23-consul工作原理">2.3 Consul工作原理</h3>
+<figure data-type="image" tabindex="3"><img src="https://imgs.cxlsky.com/image1560846871580.jpg" alt="consul1.jpg" loading="lazy"></figure>
+<p>1、当 Producer 启动的时候，会向 Consul 发送一个 post 请求，告诉 Consul 自己的 IP 和 Port<br>
+2、Consul 接收到 Producer 的注册后，每隔10s（默认）会向 Producer 发送一个健康检查的请求，检验Producer是否健康<br>
+3、当 Consumer 发送 GET 方式请求 /api/address 到 Producer 时，会先从 Consul 中拿到一个存储服务 IP 和 Port 的临时表，从表中拿到 Producer 的 IP 和 Port 后再发送 GET 方式请求 /api/address<br>
+4、该临时表每隔10s会更新，只包含有通过了健康检查的 Producer</p>
+<p>Spring Cloud Consul 项目是针对 Consul 的服务治理实现。Consul 是一个分布式高可用的系统，它包含多个组件，但是作为一个整体，在微服务架构中为我们的基础设施提供服务发现和服务配置的工具。</p>
+<h2 id="三-springcloud项目整合consul">三、SpringCloud项目整合Consul</h2>
+<h3 id="31-准备工作">3.1 准备工作</h3>
+<p>在之前的父工程项目中，新建一个子模块service-a，引入以下主要依赖：(其他依赖可自行添加)</p>
+<pre><code class="language-java">&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+</code></pre>
+<p>其中spring-boot-starter-actuator依赖用户健康检查，如果不加这个依赖，可以自定义健康检查。<br>
+其中spring-cloud-starter-consul-discovery是consul的依赖。</p>
+<h3 id="32-修改配置文件">3.2 修改配置文件</h3>
+<pre><code class="language-yaml">#连接注册中心
+spring:
+  cloud:
+    consul:
+      #注册中心的地址，使用${}的形式，如果冒号前面的值为空，则取后面的值。
+      host: ${DS_SERVER:192.168.132.131} 
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}-${random.uuid}
+
+#此配置用于健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: &quot;*&quot;
+  endpoint:
+    health:
+      show-details: always
+</code></pre>
+<h3 id="33-修改springboot入口类增加注解enablediscoveryclient">3.3 修改springboot入口类，增加注解<code>@EnableDiscoveryClient</code></h3>
+<pre><code class="language-java">@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = &quot;com.cxlsky&quot;)
+@EnableFeignClients(basePackages={&quot;com.cxlsky&quot;})
+public class EurekaClientAApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaClientAApplication.class, args);
+    }
+
+}
+</code></pre>
+<p>这样我们spring项目就改造完成了。</p>
+<h2 id="四-consul服务端的安装">四、Consul服务端的安装</h2>
+<h3 id="41-这里使用docker安装单节点consul">4.1 这里使用docker安装单节点consul：</h3>
+<pre><code class="language-bash">## 1、搜索镜像
+docker search consul
+## 2、拉取镜像
+docker pull consul
+## 3、运行镜像
+docker run -d -p 18500:8500 --name consul-server consul agent -server -bootstrap -client 0.0.0.0 -ui
+## 4、查看运行日志
+docker logs -f  consul-server
+</code></pre>
+<h3 id="42-查看web页面">4.2 查看web页面</h3>
+<figure data-type="image" tabindex="4"><img src="https://imgs.cxlsky.com/image1560850783917.jpg" alt="consulweb.jpg" loading="lazy"></figure>
+<p>可以看到现在只有consul自己一个服务注册上去了，下面我们启动我们的项目。</p>
+<figure data-type="image" tabindex="5"><img src="https://imgs.cxlsky.com/image1560851191684.jpg" alt="consulclient.jpg" loading="lazy"></figure>
+<p>可以看到上面多出了我们的服务，这样就完成了服务发现。</p>
+<blockquote>
+<p>由于注册中心的重要性，我们需要做高可用，所以需要集群部署。后续的章节中我会讲解以下docker swarm，并且使用docker swarm快速完成consul的集群部署。</p>
+</blockquote>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://www.cxlsky.com/post/hello-gridea/">
+              <h3 class="post-title">
+                下一篇：Hello Gridea
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

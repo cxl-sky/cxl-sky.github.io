@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.cxlsky.com</id>
+    <title>longlongago</title>
+    <updated>2022-10-20T08:49:22.296Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.cxlsky.com"/>
+    <link rel="self" href="https://www.cxlsky.com/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://www.cxlsky.com/images/avatar.png</logo>
+    <icon>https://www.cxlsky.com/favicon.ico</icon>
+    <rights>All rights reserved 2022, longlongago</rights>
+    <entry>
+        <title type="html"><![CDATA[Cloud Dragon 项目介绍]]></title>
+        <id>https://www.cxlsky.com/post/cloud-dragon-xiang-mu-jie-shao/</id>
+        <link href="https://www.cxlsky.com/post/cloud-dragon-xiang-mu-jie-shao/">
+        </link>
+        <updated>2021-06-14T10:38:41.000Z</updated>
+        <content type="html"><![CDATA[<p><img src="https://www.cxlsky.com/post-images/1666250871443.png" alt="" loading="lazy">Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构， 后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI<br>
+为主。</p>
+<p align="center">
+        <img src="https://oss.gagajiankang.com/cloud/logo.png" width="40px" syt height="40px" />
+</p>
+<p align="center">
+        <strong>云龙 Cloud Dragon</strong>
+</p>
+<p align="center">
+	<strong>适合于企业级别的微服务开发脚手架，功能齐全，开箱即用，部署快捷</strong>
+</p>
+<p align="center">
+	<a target="_blank" href="https://gitter.im/dragon_cloud/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+		<img src="https://badges.gitter.im/dragon_cloud/community.svg" />
+	</a>
+    <a target="_blank" href="https://opensource.org/licenses/Apache-2.0">
+		<img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" />
+	</a>
+	<a target="_blank" href="https://travis-ci.org/cxl-sky/cloud-dragon">
+		<img src="https://travis-ci.org/cxl-sky/cloud-dragon.svg?branch=master" />
+	</a>
+    <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&noverify=0">
+		<img src="https://img.shields.io/badge/QQ%E7%BE%A4-878510003-blue" />
+	</a>
+    <a target="_blank" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">
+		<img src="https://img.shields.io/badge/JDK-8+-green.svg" />
+	</a>
+	<a target="_blank" href="https://spring.io/projects/spring-boot">
+		<img src="https://img.shields.io/badge/spring%20boot-2.2.5-yellowgreen" />
+	</a>
+</p>
+<hr>
+<blockquote>
+<p>目前项目处于开发阶段，部分功能已经可以使用，后续会逐步完成其他规划内容，并完善项目文档，如果你在使用过程中遇到任何问题，可以通过 QQ 群聊联系我，<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a> 加入群聊。</p>
+</blockquote>
+<h2 id="项目介绍">📚 项目介绍</h2>
+<p>Cloud Dragon 是一套适合于企业级使用的微服务脚手架项目，可以帮助快速构建微服务架构，采用前后端分离架构， 后端主要以 Spring Cloud Alibaba &amp; Nacos 为主，前端主要以 Vue &amp; Element-UI<br>
+为主。</p>
+<p>Cloud Dragon 使用 Oauth2 进行认证授权管理，采用 JWT + Redis 的方式控制令牌发放与销毁。 统一使用 Docker<br>
+部署，提供一键脚本安装，快速部署使用。支持一键快速生成前后端代码，提高开发开发效率，只需专注于业务，是一个非常适用的微服务快速开发脚手架。</p>
+<ul>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
+</ul>
+<h2 id="主要功能及规划">主要功能及规划</h2>
+<h3 id="1-主要技术栈及规划">1. 主要技术栈及规划：</h3>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>使用技术</th>
+<th>进度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>注册中心</td>
+<td>Nacos</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>配置中心</td>
+<td>Nacos</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>消息中心</td>
+<td>Spring Cloud Stream + Rabbitmq</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>动态网关</td>
+<td>Spring Cloud Gateway</td>
+<td>✅</td>
+<td>多种维度的流量控制（服务、IP、用户等），后端可配置化</td>
+</tr>
+<tr>
+<td>认证中心</td>
+<td>Spring Cloud Security OAuth2</td>
+<td>✅</td>
+<td>发放 Token 服务（JWT）</td>
+</tr>
+<tr>
+<td>授权认证</td>
+<td>Spring Cloud Security OAuth2</td>
+<td>✅</td>
+<td>根据 Token 判断权限服务</td>
+</tr>
+<tr>
+<td>服务容错</td>
+<td>Spring Cloud Sentinel</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>服务调用</td>
+<td>Spring Cloud OpenFeign</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>对象存储</td>
+<td>Minio</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>任务调度</td>
+<td>XXL-Job</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>分库分表</td>
+<td>Sharding Sphere</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>数据权限</td>
+<td>Mybatis Plus</td>
+<td>🏗</td>
+<td>对原查询做增强，业务代码不用控制，即可实现。</td>
+</tr>
+<tr>
+<td>代码生成</td>
+<td></td>
+<td>🏗50%（后端代码生成完成，前端代码生成进行中）</td>
+<td>前后端代码的生成，支持Vue</td>
+</tr>
+<tr>
+<td>文档管理</td>
+<td>Swagger2</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>服务监控</td>
+<td>Spring Boot Admin</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>链路追踪</td>
+<td>SkyWalking</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>操作审计</td>
+<td></td>
+<td>🏗</td>
+<td>系统关键操作日志记录和查询</td>
+</tr>
+<tr>
+<td>日志管理</td>
+<td>ES + Kibana + Logstash</td>
+<td>🏗</td>
+<td>ELK</td>
+</tr>
+<tr>
+<td>监控告警</td>
+<td>Grafana</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>持续集成与部署</td>
+<td>Jenkins + Docker + Docker Compose</td>
+<td>🏗</td>
+<td></td>
+</tr>
+<tr>
+<td>集群部署</td>
+<td>Jenkins + Docker Swarm</td>
+<td>🏗</td>
+<td>使用 Docker 原生集群部署管理工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-平台管理页面主要功能规划">2. 平台管理页面主要功能规划：</h3>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>使用技术</th>
+<th>进度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>用户是系统操作者，该功能主要完成系统用户配置。</td>
+</tr>
+<tr>
+<td>角色管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>角色菜单权限分配、设置角色按机构进行数据范围权限划分。</td>
+</tr>
+<tr>
+<td>菜单管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>配置系统菜单，操作权限，按钮权限标识等。</td>
+</tr>
+<tr>
+<td>部门管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>配置系统组织机构，树结构展现，可随意调整上下级。</td>
+</tr>
+<tr>
+<td>代码生成管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>用于生成系统页面代码，包括前端代码、后端代码</td>
+</tr>
+<tr>
+<td>统一文档管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>文档管理</td>
+</tr>
+<tr>
+<td>操作审计</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>系统关键操作日志记录和查询</td>
+</tr>
+<tr>
+<td>缓存管理</td>
+<td>自开发</td>
+<td>🏗</td>
+<td>通过页面可视化管理缓存</td>
+</tr>
+</tbody>
+</table>
+<h2 id="系统架构">🥞 系统架构</h2>
+<h3 id="系统架构图">系统架构图</h3>
+<blockquote>
+<p>待完善</p>
+</blockquote>
+<h3 id="项目服务">项目服务</h3>
+<blockquote>
+<p>以下服务均采用 Docker &amp; Docker Compose，支持一键部署。（待完善）</p>
+</blockquote>
+<h4 id="1-基础服务">1. 基础服务</h4>
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>服务名</th>
+<th>端口</th>
+<th>进度</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据库</td>
+<td>mysql</td>
+<td>3306</td>
+<td>✅</td>
+<td>共用，各应用可建不同的 database</td>
+</tr>
+<tr>
+<td>KV缓存</td>
+<td>redis</td>
+<td>6379</td>
+<td>✅</td>
+<td>共用，原则上各应用单独实例</td>
+</tr>
+<tr>
+<td>消息中间件</td>
+<td>rabbitmq</td>
+<td>5672</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>注册与配置中心</td>
+<td>nacos</td>
+<td>8848</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>搜索引擎中间件</td>
+<td>elasticsearch</td>
+<td>9200</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>日志分析工具</td>
+<td>kibana</td>
+<td>5601</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>数据可视化工具</td>
+<td>grafana</td>
+<td>3000</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+<tr>
+<td>对象存储服务</td>
+<td>MinIO</td>
+<td>9000</td>
+<td>✅</td>
+<td>共用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2应用服务">2.应用服务</h4>
+<blockquote>
+<p>以下服务均需要依赖基础服务中的 nacos，务必确保 nacos 正常运行，项目的配置文件均保存在 nacos 配置中心统一管理，本地无配置<br>
+所有应用都需要进过网关，务必保证网关启动（开发环境调试可不做限制）</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>服务名</th>
+<th>进度</th>
+<th>简介</th>
+<th>应用地址</th>
+<th>文档</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dragon-web</td>
+<td>✅</td>
+<td>前端管理页面（逐步完善中）</td>
+<td>http://localhost:18888</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>gateway</td>
+<td>✅</td>
+<td>统一API网关，负责路由转发</td>
+<td>http://localhost:10081</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>auth-server</td>
+<td>✅</td>
+<td>认证服务，生成jwt</td>
+<td>http://localhost:10082</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>resource-server</td>
+<td>✅</td>
+<td>授权服务，判断是否可以访问</td>
+<td>http://localhost:10083</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>user-center</td>
+<td>✅</td>
+<td>用户中心，权限角色管理等（逐步完善中）</td>
+<td>http://localhost:10084</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>upload-center</td>
+<td>🏗</td>
+<td>文件上传中心</td>
+<td>http://localhost:10085</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>code-generate</td>
+<td>✅</td>
+<td>代码生成中心，快速生成前后端代码（逐步完善中）</td>
+<td>http://localhost:10086</td>
+<td>待完善</td>
+</tr>
+<tr>
+<td>未完待续</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="项目功能预览">项目功能预览</h2>
+<h3 id="登录页面"><strong>登录页面</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/login.jpg" width="576px" syt height="324px" />
+<h3 id="用户管理"><strong>用户管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/user.jpg" width="576px" syt height="324px" />
+<h3 id="角色管理"><strong>角色管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/role.jpg" width="576px" syt height="324px" />
+<h3 id="菜單管理"><strong>菜單管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/menu.jpg" width="576px" syt height="324px" />
+<h3 id="接口管理"><strong>接口管理</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/api.jpg" width="576px" syt height="324px" />
+<h3 id="注冊中心"><strong>注冊中心</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/nacos.jpg" width="576px" syt height="324px" />
+<h3 id="文件上传"><strong>文件上传</strong></h3>
+<img src="https://oss.gagajiankang.com/cloud/minio.jpg" width="576px" syt height="324px" />
+<p><strong>更多预览图，尽请期待</strong></p>
+<h2 id="联系交流">联系交流</h2>
+<h3 id="加入贡献代码">加入贡献代码</h3>
+<p><a href="">请戳这里</a> 加群主微信。</p>
+<h3 id="给作者-star-支持">给作者 Star 支持</h3>
+<p>如果你觉的有帮助到您，请帮忙点击右上角 star 支持我，您的支持是我的动力。</p>
+<h3 id="学习交流">学习交流</h3>
+<ul>
+<li>邮箱：ustbcxl@163.com</li>
+<li></li>
+</ul>
+<p>加群<a href="https://qm.qq.com/cgi-bin/qm/qr?k=gQw2MJysfnRTy9qKf8hWnK-xB24c__Dj&amp;authKey=pxIxNHae0uFqcQenxT72xKQ3Isz3Xt5p9J+d2RCUPr2HaqLv+KElTKavXBPvgKsj&amp;noverify=0">请戳这里</a></p>
+<ul>
+<li><a href="https://github.com/cxl-sky/cloud-dragon">项目地址戳这里，记得 Star 支持一下哦</a></li>
+<li><a href="https://github.com/cxl-sky/cloud-dragon/blob/master/docs/quick-start.md">10 分钟快速开始</a></li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JetCache 缓存框架]]></title>
+        <id>https://www.cxlsky.com/post/jetcache-huan-cun-kuang-jia/</id>
+        <link href="https://www.cxlsky.com/post/jetcache-huan-cun-kuang-jia/">
+        </link>
+        <updated>2021-06-10T03:24:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>之前一直在用Spring Cache进行接口数据的缓存，主要是Spring Cache在对具体key缓存失效时间的设置不是很方法，还要自己去扩展，无意中发现了阿里的JetCache。大部分的需求都能满足，并且有一些很实用的功能，今天给大家介绍下。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>之前一直在用Spring Cache进行接口数据的缓存，主要是Spring Cache在对具体key缓存失效时间的设置不是很方法，还要自己去扩展，无意中发现了阿里的JetCache。大部分的需求都能满足，并且有一些很实用的功能，今天给大家介绍下。</p>
+<!-- more -->
+<p>JetCache是一个基于Java的缓存系统封装，提供统一的API和注解来简化缓存的使用。 JetCache提供了比SpringCache更加强大的注解，可以原生的支持TTL、两级缓存、分布式自动刷新，还提供了Cache接口用于手工缓存操作。 当前有四个实现，RedisCache、TairCache（此部分未在github开源）、CaffeineCache(in memory)和一个简易的LinkedHashMapCache(in memory)，要添加新的实现也是非常简单的。</p>
+<p>GitHub地址：<a href="https://github.com/alibaba/jetcache">https://github.com/alibaba/jetcache</a></p>
+<h2 id="特性">特性</h2>
+<ol>
+<li>通过统一的API访问Cache系统</li>
+<li>通过注解实现声明式的方法缓存，支持TTL和两级缓存</li>
+<li>通过注解创建并配置Cache实例</li>
+<li>针对所有Cache实例和方法缓存的自动统计</li>
+<li>Key的生成策略和Value的序列化策略是可以配置的</li>
+<li>分布式缓存自动刷新，分布式锁 (2.2+)</li>
+<li>异步Cache API (2.2+，使用Redis的lettuce客户端时)</li>
+<li>Spring Boot支持</li>
+</ol>
+<h2 id="基本使用">基本使用</h2>
+<h3 id="1-maven依赖">1. maven依赖</h3>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.alicp.jetcache&lt;/groupId&gt;
+    &lt;artifactId&gt;jetcache-starter-redis&lt;/artifactId&gt;
+    &lt;version&gt;2.5.11&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="2-springboot配置">2. springboot配置</h3>
+<h4 id="配置文件">配置文件</h4>
+<pre><code class="language-text"># 采用Java序列化存储
+jetcache.remote.default.valueDecoder = java
+# Key的转换器
+jetcache.remote.default.keyConvertor = fastjson
+# 是否加入缓存key前缀
+jetcache.areaInCacheName = false
+jetcache.remote.default.valueEncoder = java
+# 缓存类型。tair、redis为当前支持的远程缓存；linkedhashmap、caffeine为当前支持的本地缓存类型
+jetcache.local.default.type = linkedhashmap
+# 控制台输出统计数据，统计间隔，0表示不统计
+jetcache.statIntervalMinutes = 15
+jetcache.local.default.keyConvertor = fastjson
+jetcache.remote.default.uri = redis://192.168.0.210:6379/
+</code></pre>
+<p>其中：remote 表示远程缓存，local表示本地缓存</p>
+<h4 id="启动类">启动类</h4>
+<pre><code class="language-java">@SpringBootApplication
+@EnableMethodCache(basePackages = &quot;com.cxytiandi.jetcache&quot;)
+@EnableCreateCacheAnnotation
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class);
+    }
+}
+</code></pre>
+<p>其中：<br>
+@EnableMethodCache 用于激活@Cached注解的使用，<br>
+@EnableCreateCacheAnnotation 用于激活@CreateCache注解的使用</p>
+<h4 id="定义一个简单的实体类来作为数据的缓存必须实现serializable接口">定义一个简单的实体类来作为数据的缓存，必须实现Serializable接口。</h4>
+<pre><code class="language-java">@Data
+public class User implements Serializable {
+
+	private Long id;
+	
+	private String name;
+
+}
+</code></pre>
+<h4 id="createcache使用">@CreateCache使用</h4>
+<pre><code class="language-java">@CreateCache(expire = 100)
+private Cache&lt;Long, User&gt; userCache;
+
+User user = new User();
+user.setId(1L);
+user.setName(&quot;yinjihuan&quot;);
+// 新增缓存
+userCache.put(1L, user);
+
+// 删除缓存
+userCache.remove(1L);
+</code></pre>
+<p>用起来很简单，就像使用map一样，@CreateCache中有很多配置需要我们自己去指定，不指定则使用默认的，关于配置请查看文档：<a href="https://github.com/alibaba/jetcache/wiki/CreateCache_CN">https://github.com/alibaba/jetcache/wiki/CreateCache_CN</a></p>
+<h4 id="cached使用">@Cached使用</h4>
+<pre><code class="language-java">@Cached(name=&quot;getUser.&quot;, key=&quot;#id&quot;, expire = 8, cacheType=CacheType.BOTH)
+@Override
+public User getUser(Long id) {
+	User user = new User();
+	user.setId(1L);
+	user.setName(&quot;yinjihuan&quot;);
+	return user;
+}
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>name：缓存名称</li>
+<li>key：缓存key,追加到name后面构成唯一的缓存key, 使用SpEL指定key，如果没有指定会根据所有参数自动生成。</li>
+<li>expire：缓存失效时间</li>
+<li>cacheType：缓存的类型，包括CacheType.REMOTE、CacheType.LOCAL、CacheType.BOTH。如果定义为BOTH，会使用LOCAL和REMOTE组合成两级缓存<br>
+更多配置的介绍请查看文档：<a href="https://github.com/alibaba/jetcache/wiki/MethodCache_CN">https://github.com/alibaba/jetcache/wiki/MethodCache_CN</a></li>
+</ul>
+<p>今天的介绍就到这里，使用起来还是很方便的，关于更多的功能大家自行去尝试吧，比如缓存定时刷新，缓存命中率统计，自定义序列化方式等等。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JS 导出 Excel]]></title>
+        <id>https://www.cxlsky.com/post/js-dao-chu-excel/</id>
+        <link href="https://www.cxlsky.com/post/js-dao-chu-excel/">
+        </link>
+        <updated>2021-06-07T01:40:19.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>在我们开发项目的过程中，应该都会遇到 excel 导出功能。那么现在我对 excel 导出方法做如下的记录，方便以后查看，并且分享给大家。</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>在我们开发项目的过程中，应该都会遇到 excel 导出功能。那么现在我对 excel 导出方法做如下的记录，方便以后查看，并且分享给大家。</p>
+</blockquote>
+<!-- more -->
+<h2 id="一-纯-js-导出-excel">一、纯 JS 导出 EXCEL</h2>
+<p>我们在开发过程中，或多或少会遇到不需要调用接口来导出 EXCEL 的情况，那么可以参照如下代码，实现前端纯 JS 导出 EXCEL。</p>
+<pre><code class="language-javascript">export function tableToExcel(jsonData, fileName) {
+  let str = '';
+  //循环遍历，每行加入tr标签，每个单元格加td标签
+  for (let i = 0; i &lt; jsonData.length; i++) {
+    // 数据列标题
+    if (i === 0) {
+      str += '&lt;tr&gt;';
+      for (let item in jsonData[i]) {
+        //增加\t为了不让表格显示科学计数法或者其他格式
+        str += `&lt;td&gt;${item + '\t'}&lt;/td&gt;`;
+      }
+      str += '&lt;/tr&gt;';
+    }
+    // 数据内容
+    str += '&lt;tr&gt;';
+    for (let item in jsonData[i]) {
+      //增加\t为了不让表格显示科学计数法或者其他格式
+      str += `&lt;td&gt;${jsonData[i][item] + '\t'}&lt;/td&gt;`;
+    }
+    str += '&lt;/tr&gt;';
+  }
+  // Worksheet名
+  let worksheet = 'Sheet1';
+  let uri = 'data:application/vnd.ms-excel;base64,';
+
+  // 下载的表格模板数据
+  let template = `&lt;html xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;
+      xmlns:x=&quot;urn:schemas-microsoft-com:office:excel&quot;
+      xmlns=&quot;http://www.w3.org/TR/REC-html40&quot;&gt;
+      &lt;head&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;&lt;x:ExcelWorkbook&gt;&lt;x:ExcelWorksheets&gt;&lt;x:ExcelWorksheet&gt;
+        &lt;x:Name&gt;${worksheet}&lt;/x:Name&gt;
+        &lt;x:WorksheetOptions&gt;&lt;x:DisplayGridlines/&gt;&lt;/x:WorksheetOptions&gt;&lt;/x:ExcelWorksheet&gt;
+        &lt;/x:ExcelWorksheets&gt;&lt;/x:ExcelWorkbook&gt;&lt;/xml&gt;&lt;![endif]--&gt;
+        &lt;/head&gt;&lt;body&gt;&lt;table&gt;${str}&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;`;
+        
+        
+  // 直接下载（此方法不能自定义文件名）
+  // window.location.href = uri + base64(template)
+
+  // 通过创建a标签下载（此方法可以自定义文件名）
+  let a = document.createElement('a');
+  a.href = uri + base64(template);
+  a.download = `${fileName}_${new Date().toLocaleString()}.xlsx`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+
+}
+
+// 输出base64编码
+function base64(s) {
+  return window.btoa(unescape(encodeURIComponent(s)))
+}
+
+</code></pre>
+<h2 id="二-通过接口导出-excel">二、通过接口导出 EXCEL</h2>
+<p>当我们的导出数据需要从后端获取时，可以通过如下方式进行导出。<br>
+本例使用了 axios 请求服务端数据，如过是其他方式类似，请看如下代码：</p>
+<pre><code class="language-javascript">exportExcel(url, data, fileName) {
+    return axios({
+&lt;!-- more --&gt;
+
+      url: url,
+      baseURL: baseApi,
+      method: 'post',
+      data: JSON.stringify(data),
+      responseType: 'blob',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'content-type': 'application/json; charset=utf-8'
+      }
+    }).then((res) =&gt; {
+      if (res.status === 200) {
+        let tempBlob = new Blob([res.data, {type :'application/vnd.ms-excel:charset=utf-8'}]);
+        let targetUrl = window.URL.createObjectURL(tempBlob);
+        let a = document.createElement('a');
+        a.href = targetUrl;
+        a.download = `${fileName}_${new Date().toLocaleString()}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else {
+        console.log(&quot;请求资源失败&quot;)
+      }
+    }).catch(e=&gt;console.log(e))
+  },
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[注册中心Consul]]></title>
+        <id>https://www.cxlsky.com/post/注册中心Consul - 副本/</id>
+        <link href="https://www.cxlsky.com/post/注册中心Consul - 副本/">
+        </link>
+        <updated>2020-02-11T05:17:08.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-为什么选择consul">一、为什么选择consul</h2>
+<p>我们知道 Eureka 2.X 遇到困难停止开发了，但其实对国内的用户影响甚小，一方面国内大都使用的是 Eureka 1.X 系列，另一方面 Spring Cloud 支持很多服务发现的软件，Eureka 只是其中之一，下面是 Spring Cloud 支持的服务发现软件以及特性对比：</p>
+<figure data-type="image" tabindex="1"><img src="https://imgs.cxlsky.com/image1560846242657.jpg" alt="registry.jpg" loading="lazy"></figure>
+<p>在以上服务发现的软件中，Euerka 和 Consul 使用最为广泛。但由于eureka已经停止更新，所以这里选用consul。</p>
+<h2 id="二-consul介绍">二、Consul介绍</h2>
+<p>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其它分布式服务注册与发现的方案，Consul 的方案更“一站式”，内置了服务注册与发现框 架、分布一致性协议实现、健康检查、Key/Value 存储、多数据中心方案，不再需要依赖其它工具（比如 ZooKeeper 等）。使用起来也较 为简单。Consul 使用 Go 语言编写，因此具有天然可移植性(支持Linux、windows和Mac OS X)；安装包仅包含一个可执行文件，方便部署，与 Docker 等轻量级容器可无缝配合。</p>
+<h3 id="21-consul优势">2.1 consul优势</h3>
+<p>1、使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft。<br>
+2、支持多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障,而其部署则需要考虑网络延迟, 分片等情况等。 zookeeper 和 etcd 均不提供多数据中心功能的支持。<br>
+3、支持健康检查。 etcd 不提供此功能。<br>
+4、支持 http 和 dns 协议接口。 zookeeper 的集成较为复杂, etcd 只支持 http 协议。<br>
+5、官方提供 web 管理界面, etcd 无此功能。<br>
+6、综合比较, Consul 作为服务注册和配置管理的新星, 比较值得关注和研究。</p>
+<h3 id="22-consul角色">2.2 Consul角色</h3>
+<p>1、client: 客户端, 无状态, 将 HTTP 和 DNS 接口请求转发给局域网内的服务端集群。<br>
+2、server: 服务端, 保存配置信息, 高可用集群, 在局域网内与本地客户端通讯, 通过广域网与其它数据中心通讯。 每个数据中心的 server 数量推荐为 3 个或是 5 个。</p>
+<p>Consul 客户端、服务端还支持夸中心的使用，更加提高了它的高可用性。</p>
+<figure data-type="image" tabindex="2"><img src="https://imgs.cxlsky.com/image1560846818889.jpg" alt="consul.jpg" loading="lazy"></figure>
+<h3 id="23-consul工作原理">2.3 Consul工作原理</h3>
+<figure data-type="image" tabindex="3"><img src="https://imgs.cxlsky.com/image1560846871580.jpg" alt="consul1.jpg" loading="lazy"></figure>
+<p>1、当 Producer 启动的时候，会向 Consul 发送一个 post 请求，告诉 Consul 自己的 IP 和 Port<br>
+2、Consul 接收到 Producer 的注册后，每隔10s（默认）会向 Producer 发送一个健康检查的请求，检验Producer是否健康<br>
+3、当 Consumer 发送 GET 方式请求 /api/address 到 Producer 时，会先从 Consul 中拿到一个存储服务 IP 和 Port 的临时表，从表中拿到 Producer 的 IP 和 Port 后再发送 GET 方式请求 /api/address<br>
+4、该临时表每隔10s会更新，只包含有通过了健康检查的 Producer</p>
+<p>Spring Cloud Consul 项目是针对 Consul 的服务治理实现。Consul 是一个分布式高可用的系统，它包含多个组件，但是作为一个整体，在微服务架构中为我们的基础设施提供服务发现和服务配置的工具。</p>
+<h2 id="三-springcloud项目整合consul">三、SpringCloud项目整合Consul</h2>
+<h3 id="31-准备工作">3.1 准备工作</h3>
+<p>在之前的父工程项目中，新建一个子模块service-a，引入以下主要依赖：(其他依赖可自行添加)</p>
+<pre><code class="language-java">&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+</code></pre>
+<p>其中spring-boot-starter-actuator依赖用户健康检查，如果不加这个依赖，可以自定义健康检查。<br>
+其中spring-cloud-starter-consul-discovery是consul的依赖。</p>
+<h3 id="32-修改配置文件">3.2 修改配置文件</h3>
+<pre><code class="language-yaml">#连接注册中心
+spring:
+  cloud:
+    consul:
+      #注册中心的地址，使用${}的形式，如果冒号前面的值为空，则取后面的值。
+      host: ${DS_SERVER:192.168.132.131} 
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}-${random.uuid}
+
+#此配置用于健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: &quot;*&quot;
+  endpoint:
+    health:
+      show-details: always
+</code></pre>
+<h3 id="33-修改springboot入口类增加注解enablediscoveryclient">3.3 修改springboot入口类，增加注解<code>@EnableDiscoveryClient</code></h3>
+<pre><code class="language-java">@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = &quot;com.cxlsky&quot;)
+@EnableFeignClients(basePackages={&quot;com.cxlsky&quot;})
+public class EurekaClientAApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaClientAApplication.class, args);
+    }
+
+}
+</code></pre>
+<p>这样我们spring项目就改造完成了。</p>
+<h2 id="四-consul服务端的安装">四、Consul服务端的安装</h2>
+<h3 id="41-这里使用docker安装单节点consul">4.1 这里使用docker安装单节点consul：</h3>
+<pre><code class="language-bash">## 1、搜索镜像
+docker search consul
+## 2、拉取镜像
+docker pull consul
+## 3、运行镜像
+docker run -d -p 18500:8500 --name consul-server consul agent -server -bootstrap -client 0.0.0.0 -ui
+## 4、查看运行日志
+docker logs -f  consul-server
+</code></pre>
+<h3 id="42-查看web页面">4.2 查看web页面</h3>
+<figure data-type="image" tabindex="4"><img src="https://imgs.cxlsky.com/image1560850783917.jpg" alt="consulweb.jpg" loading="lazy"></figure>
+<p>可以看到现在只有consul自己一个服务注册上去了，下面我们启动我们的项目。</p>
+<figure data-type="image" tabindex="5"><img src="https://imgs.cxlsky.com/image1560851191684.jpg" alt="consulclient.jpg" loading="lazy"></figure>
+<p>可以看到上面多出了我们的服务，这样就完成了服务发现。</p>
+<blockquote>
+<p>由于注册中心的重要性，我们需要做高可用，所以需要集群部署。后续的章节中我会讲解以下docker swarm，并且使用docker swarm快速完成consul的集群部署。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[注册中心Consul]]></title>
+        <id>https://www.cxlsky.com/post/注册中心Consul/</id>
+        <link href="https://www.cxlsky.com/post/注册中心Consul/">
+        </link>
+        <updated>2020-02-11T05:17:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>在微服务的开发过程中，注册中心是一个非常重要的角色，它可以帮助我们发现其他的服务。注册中心也有很多种类，下面主要介绍一下我使用过的 Consul。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在微服务的开发过程中，注册中心是一个非常重要的角色，它可以帮助我们发现其他的服务。注册中心也有很多种类，下面主要介绍一下我使用过的 Consul。</p>
+<!-- more -->
+<h2 id="一-为什么选择consul">一、为什么选择consul</h2>
+<p>我们知道 Eureka 2.X 遇到困难停止开发了，但其实对国内的用户影响甚小，一方面国内大都使用的是 Eureka 1.X 系列，另一方面 Spring Cloud 支持很多服务发现的软件，Eureka 只是其中之一，下面是 Spring Cloud 支持的服务发现软件以及特性对比：</p>
+<figure data-type="image" tabindex="1"><img src="https://imgs.cxlsky.com/image1560846242657.jpg" alt="registry.jpg" loading="lazy"></figure>
+<p>在以上服务发现的软件中，Euerka 和 Consul 使用最为广泛。但由于eureka已经停止更新，所以这里选用consul。</p>
+<h2 id="二-consul介绍">二、Consul介绍</h2>
+<p>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其它分布式服务注册与发现的方案，Consul 的方案更“一站式”，内置了服务注册与发现框 架、分布一致性协议实现、健康检查、Key/Value 存储、多数据中心方案，不再需要依赖其它工具（比如 ZooKeeper 等）。使用起来也较 为简单。Consul 使用 Go 语言编写，因此具有天然可移植性(支持Linux、windows和Mac OS X)；安装包仅包含一个可执行文件，方便部署，与 Docker 等轻量级容器可无缝配合。</p>
+<h3 id="21-consul优势">2.1 consul优势</h3>
+<p>1、使用 Raft 算法来保证一致性, 比复杂的 Paxos 算法更直接. 相比较而言, zookeeper 采用的是 Paxos, 而 etcd 使用的则是 Raft。<br>
+2、支持多数据中心，内外网的服务采用不同的端口进行监听。 多数据中心集群可以避免单数据中心的单点故障,而其部署则需要考虑网络延迟, 分片等情况等。 zookeeper 和 etcd 均不提供多数据中心功能的支持。<br>
+3、支持健康检查。 etcd 不提供此功能。<br>
+4、支持 http 和 dns 协议接口。 zookeeper 的集成较为复杂, etcd 只支持 http 协议。<br>
+5、官方提供 web 管理界面, etcd 无此功能。<br>
+6、综合比较, Consul 作为服务注册和配置管理的新星, 比较值得关注和研究。</p>
+<h3 id="22-consul角色">2.2 Consul角色</h3>
+<p>1、client: 客户端, 无状态, 将 HTTP 和 DNS 接口请求转发给局域网内的服务端集群。<br>
+2、server: 服务端, 保存配置信息, 高可用集群, 在局域网内与本地客户端通讯, 通过广域网与其它数据中心通讯。 每个数据中心的 server 数量推荐为 3 个或是 5 个。</p>
+<p>Consul 客户端、服务端还支持夸中心的使用，更加提高了它的高可用性。</p>
+<figure data-type="image" tabindex="2"><img src="https://imgs.cxlsky.com/image1560846818889.jpg" alt="consul.jpg" loading="lazy"></figure>
+<h3 id="23-consul工作原理">2.3 Consul工作原理</h3>
+<figure data-type="image" tabindex="3"><img src="https://imgs.cxlsky.com/image1560846871580.jpg" alt="consul1.jpg" loading="lazy"></figure>
+<p>1、当 Producer 启动的时候，会向 Consul 发送一个 post 请求，告诉 Consul 自己的 IP 和 Port<br>
+2、Consul 接收到 Producer 的注册后，每隔10s（默认）会向 Producer 发送一个健康检查的请求，检验Producer是否健康<br>
+3、当 Consumer 发送 GET 方式请求 /api/address 到 Producer 时，会先从 Consul 中拿到一个存储服务 IP 和 Port 的临时表，从表中拿到 Producer 的 IP 和 Port 后再发送 GET 方式请求 /api/address<br>
+4、该临时表每隔10s会更新，只包含有通过了健康检查的 Producer</p>
+<p>Spring Cloud Consul 项目是针对 Consul 的服务治理实现。Consul 是一个分布式高可用的系统，它包含多个组件，但是作为一个整体，在微服务架构中为我们的基础设施提供服务发现和服务配置的工具。</p>
+<h2 id="三-springcloud项目整合consul">三、SpringCloud项目整合Consul</h2>
+<h3 id="31-准备工作">3.1 准备工作</h3>
+<p>在之前的父工程项目中，新建一个子模块service-a，引入以下主要依赖：(其他依赖可自行添加)</p>
+<pre><code class="language-java">&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-cloud-starter-consul-discovery&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+</code></pre>
+<p>其中spring-boot-starter-actuator依赖用户健康检查，如果不加这个依赖，可以自定义健康检查。<br>
+其中spring-cloud-starter-consul-discovery是consul的依赖。</p>
+<h3 id="32-修改配置文件">3.2 修改配置文件</h3>
+<pre><code class="language-yaml">#连接注册中心
+spring:
+  cloud:
+    consul:
+      #注册中心的地址，使用${}的形式，如果冒号前面的值为空，则取后面的值。
+      host: ${DS_SERVER:192.168.132.131} 
+      port: 8500
+      discovery:
+        instance-id: ${spring.application.name}-${random.uuid}
+
+#此配置用于健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: &quot;*&quot;
+  endpoint:
+    health:
+      show-details: always
+</code></pre>
+<h3 id="33-修改springboot入口类增加注解enablediscoveryclient">3.3 修改springboot入口类，增加注解<code>@EnableDiscoveryClient</code></h3>
+<pre><code class="language-java">@EnableDiscoveryClient
+@SpringBootApplication(scanBasePackages = &quot;com.cxlsky&quot;)
+@EnableFeignClients(basePackages={&quot;com.cxlsky&quot;})
+public class EurekaClientAApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EurekaClientAApplication.class, args);
+    }
+
+}
+</code></pre>
+<p>这样我们spring项目就改造完成了。</p>
+<h2 id="四-consul服务端的安装">四、Consul服务端的安装</h2>
+<h3 id="41-这里使用docker安装单节点consul">4.1 这里使用docker安装单节点consul：</h3>
+<pre><code class="language-bash">## 1、搜索镜像
+docker search consul
+## 2、拉取镜像
+docker pull consul
+## 3、运行镜像
+docker run -d -p 18500:8500 --name consul-server consul agent -server -bootstrap -client 0.0.0.0 -ui
+## 4、查看运行日志
+docker logs -f  consul-server
+</code></pre>
+<h3 id="42-查看web页面">4.2 查看web页面</h3>
+<figure data-type="image" tabindex="4"><img src="https://imgs.cxlsky.com/image1560850783917.jpg" alt="consulweb.jpg" loading="lazy"></figure>
+<p>可以看到现在只有consul自己一个服务注册上去了，下面我们启动我们的项目。</p>
+<figure data-type="image" tabindex="5"><img src="https://imgs.cxlsky.com/image1560851191684.jpg" alt="consulclient.jpg" loading="lazy"></figure>
+<p>可以看到上面多出了我们的服务，这样就完成了服务发现。</p>
+<blockquote>
+<p>由于注册中心的重要性，我们需要做高可用，所以需要集群部署。后续的章节中我会讲解以下docker swarm，并且使用docker swarm快速完成consul的集群部署。</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://www.cxlsky.com/post/hello-gridea/</id>
+        <link href="https://www.cxlsky.com/post/hello-gridea/">
+        </link>
+        <updated>2018-12-11T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="http://fehey.com/">示例网站</a></p>
+<figure data-type="image" tabindex="1"><img src="https://www.cxlsky.com/post-images/1622708559365.png" alt="" loading="lazy"></figure>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[远程事务配置]]></title>
+        <id>https://www.cxlsky.com/post/远程事务使用说明/</id>
+        <link href="https://www.cxlsky.com/post/远程事务使用说明/">
+        </link>
+        <updated>2018-03-11T01:12:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1在git下载seata">1.在git下载seata</h2>
+<p>地址：<a href="http://121.5.101.66:8882/city-management/seata.git">http://121.5.101.66:8882/city-management/seata.git</a></p>
+<h2 id="2启动seata">2.启动:seata</h2>
+<p>在seata文件夹中的bin有启动脚本 启动就行</p>
+<h2 id="3加入依赖">3.加入依赖</h2>
+<pre><code class="language-java">&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-alibaba-seata&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="4在需要远程事务的地方加载注解">4.在需要远程事务的地方加载注解</h2>
+<pre><code class="language-java">@GlobalTransactional
+@Override
+public void testT() {
+    Test1DO aDo = new Test1DO();
+    aDo.setName(&quot;123&quot;);
+    this.save(aDo);
+    Test2DTO dto = new Test2DTO();
+    dto.setName(aDo.getName());
+    test2Client.add(dto);
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Mybatis常规配置]]></title>
+        <id>https://www.cxlsky.com/post/mybatis常规配置/</id>
+        <link href="https://www.cxlsky.com/post/mybatis常规配置/">
+        </link>
+        <updated>2018-02-11T01:12:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-mybatis-configxml配置">一、mybatis-config.xml配置</h2>
+<p>由于开发新项目，需要对mybatis做配置，这些配置可以放在系统的yml文件里，也可以单独放在一个xml文件里，本示例放到了单独文件，如下所示：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+
+	&lt;!-- 全局参数 --&gt;
+	&lt;settings&gt;
+		&lt;!-- 使全局的映射器启用或禁用缓存。 --&gt;
+		&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 --&gt;
+		&lt;setting name=&quot;lazyLoadingEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 当启用时，有延迟加载属性的对象在被调用时将会完全加载任意属性。否则，每种属性将会按需要加载。 --&gt;
+		&lt;setting name=&quot;aggressiveLazyLoading&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 是否允许单条sql 返回多个数据集 (取决于驱动的兼容性) default:true --&gt;
+		&lt;setting name=&quot;multipleResultSetsEnabled&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 是否可以使用列的别名 (取决于驱动的兼容性) default:true --&gt;
+		&lt;setting name=&quot;useColumnLabel&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 允许JDBC 生成主键。需要驱动器支持。如果设为了true，这个设置将强制使用被生成的主键，有一些驱动器不兼容不过仍然可以执行。 default:false --&gt;
+		&lt;setting name=&quot;useGeneratedKeys&quot; value=&quot;false&quot; /&gt;
+
+		&lt;!-- 指定 MyBatis 如何自动映射 数据基表的列 NONE：不隐射 PARTIAL:部分 FULL:全部 --&gt;
+		&lt;setting name=&quot;autoMappingBehavior&quot; value=&quot;PARTIAL&quot; /&gt;
+
+		&lt;!-- 这是默认的执行类型 （SIMPLE: 简单； REUSE: 执行器可能重复使用prepared statements语句；BATCH: 
+			执行器可以重复执行语句和批量更新） --&gt;
+		&lt;setting name=&quot;defaultExecutorType&quot; value=&quot;SIMPLE&quot; /&gt;
+
+		&lt;!-- 使用驼峰命名法转换字段。 --&gt;
+		&lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot; /&gt;
+
+		&lt;!-- 设置本地缓存范围 session:就会有数据的共享 statement:语句范围 (这样就不会有数据的共享 ) defalut:session --&gt;
+		&lt;setting name=&quot;localCacheScope&quot; value=&quot;SESSION&quot; /&gt;
+
+		&lt;!-- 设置但JDBC类型为空时,某些驱动程序 要指定值,default:OTHER，插入空值时不需要指定类型 --&gt;
+		&lt;setting name=&quot;jdbcTypeForNull&quot; value=&quot;NULL&quot; /&gt;
+		&lt;setting name=&quot;callSettersOnNulls&quot; value=&quot;true&quot; /&gt;
+		&lt;!-- 显示sql日志 --&gt;
+		&lt;!--&lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt;--&gt;
+
+	&lt;/settings&gt;
+	
+&lt;/configuration&gt;
+</code></pre>
+<h2 id="二-系统-applicationyml-配置">二、系统 application.yml 配置</h2>
+<pre><code class="language-yaml">mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:mapper/*.xml
+</code></pre>
+]]></content>
+    </entry>
+</feed>

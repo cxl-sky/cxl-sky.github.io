@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>聚源记录 | longlongago</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.cxlsky.com/favicon.ico?v=1666255560993">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.cxlsky.com/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.cxlsky.com">
+        <img class="avatar" src="https://www.cxlsky.com/images/avatar.png?v=1666255560993" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.cxlsky.com">
+        <h1 class="site-title">longlongago</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">聚源记录</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2021-06-04</span>
+            
+          </div>
+          <div class="post-content">
+            <h1 id="链路相关环境">链路相关环境</h1>
+<pre><code class="language-text">测试环境（资源有限）
+Kibana: http://10.106.0.138/redirect 域账号登陆
+Kafka: 10.1.12.202 s202、10.1.12.203 s203、10.1.12.204 s204 调试通用topic:CommunalLogs,其他topic需要提前申请，并配置日志消费
+http接口：10.106.0.138:8083/logstorage
+查询接口：10.106.0.138:8085/logserver
+FlumeServer：10.106.0.138:5151
+
+开发环境
+Kafka
+Kibana: http://10.1.12.78/redirect 域账号登陆
+Kafka: 10.1.12.146 dev146、10.1.12.147 dev147、10.1.12.50 dev50 调试通用topic:CommunalLogs,其他topic需要配置日志消费
+http接口：10.1.12.114:8083/logstorage
+查询接口：10.1.12.114:8085/logserver
+FlumeServer：10.1.12.78:5151
+
+SkywalkingWEB：http://10.1.12.114:8080/
+
+Skywalking采集：10.1.12.114:12800/11800
+</code></pre>
+<h1 id="juno环境">JUNO环境</h1>
+<pre><code class="language-text">服务器：
+10.1.12.174  root Juno@123  下载和ZK
+10.1.12.175  root Juno@123  下载和ZK
+10.1.12.176  root Juno@123  下载和ZK
+
+10.1.12.51  root   5tgbNHY6   校验服务
+10.1.12.52  root   5tgbNHY6   校验服务
+10.1.12.53  root   5tgbNHY6    校验服务
+
+10.1.12.54  root   hundsun@1    nginx
+10.1.12.55  root   hundsun@1    xxl-job
+10.1.12.56  root   hundsun@1    xxl-job
+
+10.1.12.57  root   hundsun@1    common服务
+
+10.106.1.96  root   hundsun@juno    主服务
+10.106.1.97 root Juno@denghc    rabbitmq
+10.106.1.98 administrator Juno@data123  共享目录和ES
+10.106.1.99 root Juno@denghc  
+
+
+
+数据库：
+测试环境：
+JYP SQL SERVER 10.106.1.101（旧） 测试库：
+主机：10.1.5.121
+账号：JunoDataTest
+密码：Jdt1202
+
+JYP SQL SERVER 10.106.1.101（新） 测试库：
+主机：10.106.1.101
+账号：JunoDataTest
+密码：Jdt1202
+
+JUNO MySQL 10.1.5.167 配置测试库：
+主机：10.106.1.96
+端口：3306
+账号：root
+密码：juno@123
+
+
+
+生产环境：
+JYP SQL SERVER 10.101.0.201 生产库：
+主机：10.101.0.201
+账号：juno_user
+密码：nbbm_345
+JYP SQL SERVER 10.101.0.191 生产库：
+主机：10.101.0.191
+账号：juno_user
+密码：nbbm_345
+JYP SQL SERVER 10.101.0.164 生产库：
+主机：10.101.0.164
+账号：CS_READ
+密码：CS_READ#123
+
+JUNO MySQL 10.102.0.118 配置生产库：
+主机：10.102.0.118
+端口：6447
+账号：junoro
+密码：Gildata@123
+
+</code></pre>
+
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  版权所有@2022 Longlongago 浙ICP备18050633号 | <a class="rss" href="https://www.cxlsky.com/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
